@@ -2,3 +2,39 @@
   box-sizing: border-box;
   margin: 0;
 }
+
+:root {
+  --header-width: 70px;
+  --layout-sidebar-width: 320px;
+
+  --content-header-height: 78px;
+  --content-aside-width: 320px;
+
+  --accent-color: #7B55D9;
+  --accent-color-hover: #6545b2;
+
+  --text-color-primary: #303133;
+  --text-color-primary-hover: #1a1b1c;
+
+  --text-colot-gray: #909399;
+
+  --border-color: #DCDFE6;
+
+  --bg-white: #ffffff;
+  --bg-white-hover: #f4f3f6;
+  --bg-white-active: #F4F0FF;
+
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-32: 2rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

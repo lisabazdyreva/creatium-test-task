@@ -122,7 +122,7 @@ const logicMenu = [
 
 .nav-list__item--caption {
   text-align: center;
-  color: var(--text-colot-gray);
+  color: var(--text-color-gray);
   font-size: 11px;
   line-height: 16px;
   margin-bottom: 6px;

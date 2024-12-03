@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ScriptsHeader from '@/components/home/ScriptsHeader.vue';
 import ScriptsAside from '@/components/home/ScriptsAside.vue';
+import LayoutSidebar from '@/components/layout/LayoutSidebar.vue';
 </script>
 
 <template>
@@ -19,8 +20,9 @@ import ScriptsAside from '@/components/home/ScriptsAside.vue';
 .home-view {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex: 1;
   min-height: 100svh;
+  border-left: 1px solid var(--border-color);
 }
 
 .home-view__content {

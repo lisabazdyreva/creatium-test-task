@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import { ref } from 'vue';
 import ArrowIcon from '@/components/icons/ArrowIcon.vue';
 import CoinIcon from '@/components/icons/navigation/CoinIcon.vue';
 import ScriptAsideItem from '@/components/home/ScriptAsideItem.vue';
 import DatabaseIcon from '@/components/icons/actions/DatabaseIcon.vue';
-import {DatabaseActionType, UserActionType} from '@/const/actions.ts';
+import { DatabaseActionType, UserActionType } from '@/const/actions.ts';
 import ConditionIcon from '@/components/icons/actions/ConditionIcon.vue';
 import TimerIcon from '@/components/icons/actions/TimerIcon.vue';
 import CodeIcon from '@/components/icons/actions/CodeIcon.vue';
@@ -47,7 +47,7 @@ const databaseActionList = [
       type: DatabaseActionType.Delete,
     },
   },
-]
+];
 
 const conditionActionList = [
   {
@@ -55,28 +55,28 @@ const conditionActionList = [
     title: 'Если',
     icon: {
       component: ConditionIcon,
-    }
+    },
   },
   {
     id: '2',
     title: 'Иначе',
     icon: {
       component: ConditionIcon,
-    }
+    },
   },
   {
     id: '3',
     title: 'Таймер',
     icon: {
       component: TimerIcon,
-    }
+    },
   },
   {
     id: '4',
     title: 'Выполнить код',
     icon: {
       component: CodeIcon,
-    }
+    },
   },
 ];
 
@@ -86,24 +86,24 @@ const usersActionList = [
     title: 'Создать пользователя',
     icon: {
       component: UserIcon,
-      type: UserActionType.Create
-    }
+      type: UserActionType.Create,
+    },
   },
   {
     id: '2',
     title: 'Изменить почту',
     icon: {
       component: UserIcon,
-      type: UserActionType.ChangeEmail
-    }
+      type: UserActionType.ChangeEmail,
+    },
   },
   {
     id: '3',
     title: 'Восстановить пароль',
     icon: {
       component: UserIcon,
-      type: UserActionType.RestorePassword
-    }
+      type: UserActionType.RestorePassword,
+    },
   },
 ];
 </script>
@@ -117,7 +117,10 @@ const usersActionList = [
     <div class="home-scripts-aside__content content">
       <div class="content__wrapper">
         <div class="content__action-item action-item">
-          <button class="action-item__button" @click="() => isShowDBContent = !isShowDBContent">
+          <button
+            class="action-item__button"
+            @click="() => (isShowDBContent = !isShowDBContent)"
+          >
             <span class="action-item__subtitle">База данных</span>
             <ArrowIcon
               class="action-item__icon"
@@ -132,7 +135,10 @@ const usersActionList = [
         </div>
 
         <div class="content__action-item action-item">
-          <button class="action-item__button" @click="() => isShowConditionsContent = !isShowConditionsContent">
+          <button
+            class="action-item__button"
+            @click="() => (isShowConditionsContent = !isShowConditionsContent)"
+          >
             <span class="action-item__subtitle">Условия и действия</span>
             <ArrowIcon
               class="action-item__icon"
@@ -148,7 +154,10 @@ const usersActionList = [
         </div>
 
         <div class="content__action-item action-item">
-          <button class="action-item__button" @click="() => isShowUserContent = !isShowUserContent">
+          <button
+            class="action-item__button"
+            @click="() => (isShowUserContent = !isShowUserContent)"
+          >
             <span class="action-item__subtitle">Пользователи</span>
             <ArrowIcon
               class="action-item__icon"
@@ -164,7 +173,6 @@ const usersActionList = [
         </div>
       </div>
     </div>
-
   </aside>
 </template>
 
@@ -183,7 +191,7 @@ const usersActionList = [
     height: var(--fixed-header-height);
     padding-left: 20px;
     padding-top: 24px;
-   /* background-color: red;*/
+    /* background-color: red;*/
     z-index: 1;
   }
 
@@ -198,7 +206,10 @@ const usersActionList = [
   .home-scripts-aside__content {
     position: relative;
     /*top: var(--fixed-header-height);*/
-    height: calc(100svh - var(--content-header-height) - var(--content-gutter) - var(--fixed-header-height));
+    height: calc(
+      100svh - var(--content-header-height) - var(--content-gutter) -
+        var(--fixed-header-height)
+    );
     overflow: auto;
   }
 

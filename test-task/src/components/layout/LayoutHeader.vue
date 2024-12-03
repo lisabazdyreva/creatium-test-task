@@ -11,49 +11,49 @@ import CalendarIcon from '@/components/icons/navigation/CalendarIcon.vue';
 
 const siteMenu = [
   {
-    link: "/",
-    title: "Memo",
+    link: '/',
+    title: 'Memo',
     icon: MemoIcon,
   },
   {
-    link: "/",
-    title: "Plugin",
+    link: '/',
+    title: 'Plugin',
     icon: PluginIcon,
   },
   {
-    link: "/",
-    title: "Settings",
+    link: '/',
+    title: 'Settings',
     icon: SettingsIcon,
-  }
+  },
 ];
 
 const dataMenu = [
   {
-    link: "/",
-    title: "Coin",
+    link: '/',
+    title: 'Coin',
     icon: CoinIcon,
   },
   {
-    link: "/",
-    title: "Folder",
+    link: '/',
+    title: 'Folder',
     icon: FolderIcon,
   },
 ];
 
 const logicMenu = [
   {
-    link: "/logic",
-    title: "Logic",
+    link: '/logic',
+    title: 'Logic',
     icon: PlayIcon,
   },
   {
-    link: "/",
-    title: "Union",
+    link: '/',
+    title: 'Union',
     icon: UnionIcon,
   },
   {
-    link: "/",
-    title: "Calendar",
+    link: '/',
+    title: 'Calendar',
     icon: CalendarIcon,
   },
 ];
@@ -67,28 +67,22 @@ const logicMenu = [
 
     <nav>
       <ul class="layout-header__nav-list nav-list">
-        <li class="nav-list__item nav-list__item--caption">
-          Сайт
-        </li>
+        <li class="nav-list__item nav-list__item--caption">Сайт</li>
         <li v-for="item in siteMenu" :key="item.title">
           <RouterLink class="nav-list__link" :to="item.link">
             <component :is="item.icon" class="nav-list__icon" />
           </RouterLink>
         </li>
 
-        <li class="nav-list__item nav-list__item--caption">
-            Данные
-        </li>
+        <li class="nav-list__item nav-list__item--caption">Данные</li>
         <li v-for="item in dataMenu" :key="item.title">
           <RouterLink class="nav-list__link" :to="item.link">
             <component :is="item.icon" class="nav-list__icon" />
           </RouterLink>
         </li>
 
-        <li class="nav-list__item nav-list__item--caption">
-          Логика
-        </li>
-        <li v-for="item in logicMenu " :key="item.title">
+        <li class="nav-list__item nav-list__item--caption">Логика</li>
+        <li v-for="item in logicMenu" :key="item.title">
           <RouterLink class="nav-list__link" :to="item.link">
             <component :is="item.icon" class="nav-list__icon" />
           </RouterLink>

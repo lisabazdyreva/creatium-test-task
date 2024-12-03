@@ -2,15 +2,14 @@
 import ScriptsHeader from '@/components/home/ScriptsHeader.vue';
 import ScriptsAside from '@/components/home/ScriptsAside.vue';
 import LayoutSidebar from '@/components/layout/LayoutSidebar.vue';
+import ScriptsContent from '@/components/ScriptsContent.vue';
 </script>
 
 <template>
   <main class="home-view">
     <ScriptsHeader class="home-view__scripts-header" />
     <section class="home-view__content content">
-      <div class="content__scripts-content">
-        Схема сценария
-      </div>
+      <ScriptsContent class="content__scripts-content" />
       <ScriptsAside class="content__scripts-aside" />
     </section>
   </main>

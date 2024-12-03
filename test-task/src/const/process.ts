@@ -1,9 +1,9 @@
 export enum ProcessStatus {
-  Started = "started",
-  Paused = "paused",
+  Started = 'started',
+  Paused = 'paused',
 }
 
 export const ProcessStatusLabel = {
-  [ProcessStatus.Started]: "Запущен",
-  [ProcessStatus.Paused]: "Остановлен"
+  [ProcessStatus.Started]: 'Запущен',
+  [ProcessStatus.Paused]: 'Остановлен',
 } as const;

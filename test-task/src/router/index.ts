@@ -13,7 +13,7 @@ const router = createRouter({
       path: '/logic',
       name: 'logic',
       component: HomeView,
-    }
+    },
   ],
 });
 

@@ -6,8 +6,8 @@ import LayoutSidebar from '@/components/layout/LayoutSidebar.vue';
 
 <template>
   <div class="app">
-<!--    <LayoutHeader />-->
-<!--    <LayoutSidebar />-->
+    <!--    <LayoutHeader />-->
+    <!--    <LayoutSidebar />-->
     <RouterView />
   </div>
 </template>

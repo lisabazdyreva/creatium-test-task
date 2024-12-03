@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { ElSwitch, ElButton, ElBreadcrumb, ElBreadcrumbItem } from 'element-plus';
-import {ref} from 'vue';
+import {
+  ElSwitch,
+  ElButton,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+} from 'element-plus';
+import { ref } from 'vue';
 import TickIcon from '@/components/icons/TickIcon.vue';
 import BreadcrumbsList from '@/components/common/BreadcrumbsList.vue';
 
@@ -18,7 +23,7 @@ const isScriptRunning = ref(true);
         <span class="script__status">Сценарий запущен</span>
         <el-switch
           v-model="isScriptRunning"
-          style="--el-switch-on-color: #67C23A; --el-switch-off-color: #cccccc"
+          style="--el-switch-on-color: #67c23a; --el-switch-off-color: #cccccc"
         />
       </div>
 
@@ -26,12 +31,12 @@ const isScriptRunning = ref(true);
         class="actions__button actions__button--history"
         plain
         style="
-          --el-button-bп-color: #FFFFFF;
-          --el-button-border-color: #DCDFE6;
+          --el-button-bп-color: #ffffff;
+          --el-button-border-color: #dcdfe6;
           --el-button-text-color: #606266;
 
-          --el-button-hover-border-color: #8B63EF;
-          --el-button-hover-text-color: #8B63EF;
+          --el-button-hover-border-color: #8b63ef;
+          --el-button-hover-text-color: #8b63ef;
         "
       >
         История запусков
@@ -40,19 +45,18 @@ const isScriptRunning = ref(true);
       <el-button
         class="actions__button actions__button--save"
         style="
-          --el-button-border-color: #8B63EF;
-          --el-button-bg-color: #8B63EF;
-          --el-button-text-color: #FFFFFF;
+          --el-button-border-color: #8b63ef;
+          --el-button-bg-color: #8b63ef;
+          --el-button-text-color: #ffffff;
 
           --el-button-hover-border-color: #6545b2;
           --el-button-hover-bg-color: #6545b2;
-          --el-button-hover-text-color: #FFFFFF;
+          --el-button-hover-text-color: #ffffff;
         "
       >
         Сохранить
         <TickIcon class="button__icon" />
       </el-button>
-
     </div>
   </div>
 </template>

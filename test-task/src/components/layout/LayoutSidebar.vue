@@ -5,81 +5,81 @@ import PlayIcon from '@/components/icons/navigation/PlayIcon.vue';
 import FullFolderIcon from '@/components/icons/FullFolderIcon.vue';
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import DotsIcon from '@/components/icons/DotsIcon.vue';
-import {ProcessStatus} from '@/const/process.ts';
+import { ProcessStatus } from '@/const/process.ts';
 import ProcessItem from '@/components/ProcessItem.vue';
 
-const searchValue = ref("");
+const searchValue = ref('');
 const activeItemId = ref<string>();
 
 const processList = [
   {
     id: '1',
-    title: "Telegram-бот",
+    title: 'Telegram-бот',
     status: ProcessStatus.Started,
   },
   {
     id: '2',
-    title: "Сайт",
+    title: 'Сайт',
     children: [
       {
         id: '2a',
-        title: "1 сценарий",
+        title: '1 сценарий',
         status: ProcessStatus.Started,
       },
       {
         id: '2b',
-        title: "2 сценарий",
+        title: '2 сценарий',
         status: ProcessStatus.Started,
       },
       {
         id: '2c',
-        title: "3 сценарий",
+        title: '3 сценарий',
         status: ProcessStatus.Paused,
       },
       {
         id: '2d',
-        title: "4 сценарий",
+        title: '4 сценарий',
         status: ProcessStatus.Paused,
-      }
+      },
     ],
   },
   {
     id: '3',
-    title: "Новый сценарий",
+    title: 'Новый сценарий',
     // status: ProcessStatus.Started,
     children: [
       {
         id: '3a',
-        title: "1 сценарий",
+        title: '1 сценарий',
         status: ProcessStatus.Started,
       },
       {
         id: '3b',
-        title: "2 сценарий",
+        title: '2 сценарий',
         status: ProcessStatus.Started,
       },
       {
         id: '3c',
-        title: "3 сценарий",
+        title: '3 сценарий',
         status: ProcessStatus.Paused,
       },
       {
         id: '3d',
-        title: "4 сценарий",
+        title: '4 сценарий',
         status: ProcessStatus.Paused,
-      }
+      },
     ],
   },
   {
     id: '4',
-    title: "Регистрация",
+    title: 'Регистрация',
     status: ProcessStatus.Paused,
   },
   {
     id: '5',
-    title: "API: Список объявлений",
+    title: 'API: Список объявлений',
     status: ProcessStatus.Started,
-  }
+  },
 ];
 
 const setActiveItemId = (id: string) => {
@@ -102,7 +102,11 @@ const setActiveItemId = (id: string) => {
 
       <ul>
         <li v-for="item in processList" :key="item.id">
-          <ProcessItem :item="item" :active-id="activeItemId" @set-active-item="setActiveItemId" />
+          <ProcessItem
+            :item="item"
+            :active-id="activeItemId"
+            @set-active-item="setActiveItemId"
+          />
         </li>
       </ul>
     </div>

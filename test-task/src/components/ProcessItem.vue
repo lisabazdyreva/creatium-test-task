@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import PlayIcon from '@/components/icons/navigation/PlayIcon.vue';
 import DotsIcon from '@/components/icons/DotsIcon.vue';
-import {ProcessStatus, ProcessStatusLabel} from '@/const/process.ts';
+import { ProcessStatus, ProcessStatusLabel } from '@/const/process.ts';
 import FullFolderIcon from '@/components/icons/FullFolderIcon.vue';
 import ArrowIcon from '@/components/icons/ArrowIcon.vue';
-import {ref} from 'vue';
+import { ref } from 'vue';
 
 defineProps<{
   item: {
     title: string;
     status?: ProcessStatus;
-    children?: any[];// todo lisa
+    children?: any[]; // todo lisa
   };
   activeId: string;
 }>();
@@ -42,23 +42,32 @@ const isOpen = ref(false);
         v-if="item?.status"
         class="process-item__status"
         :class="[`process-item__status--${item.status}`]"
-      > {{ ProcessStatusLabel[item.status] }}
+      >
+        {{ ProcessStatusLabel[item.status] }}
       </div>
     </div>
 
     <template v-if="item?.children">
-      <button class="process-item__nested-child" @click="() => isOpen = !isOpen">
+      <button
+        class="process-item__nested-child"
+        @click="() => (isOpen = !isOpen)"
+      >
         <span class="process-item__main-info">
           <span class="process-item__icon-wrapper">
-            <ArrowIcon class="process-item__arrow-icon" :class="{ 'process-item__arrow-icon--open': isOpen }" />
-            <FullFolderIcon class="process-item__icon"  />
+            <ArrowIcon
+              class="process-item__arrow-icon"
+              :class="{ 'process-item__arrow-icon--open': isOpen }"
+            />
+            <FullFolderIcon class="process-item__icon" />
           </span>
           <span class="process-item__title">{{ item.title }}</span>
           <span class="process-item__options">
             <DotsIcon class="process-item__dots-icon" />
           </span>
         </span>
-        <span class="process-item__count">{{ item.children.length }} сценария</span>
+        <span class="process-item__count"
+          >{{ item.children.length }} сценария</span
+        >
       </button>
       <ul v-show="isOpen" class="process-item__children-list">
         <li v-for="childItem in item.children" :key="childItem.id">

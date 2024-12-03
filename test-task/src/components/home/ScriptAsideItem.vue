@@ -1,13 +1,17 @@
 <script setup lang="ts">
 defineProps<{
-  item: any;// todo lisa
+  item: any; // todo lisa
 }>();
 </script>
 
 <template>
   <div class="script-aside-item">
     <div class="script-aside-item__icon-wrapper">
-      <component class="script-aside-item__icon" :is="item.icon.component" :type="item.icon?.type" />
+      <component
+        class="script-aside-item__icon"
+        :is="item.icon.component"
+        :type="item.icon?.type"
+      />
     </div>
     <div class="script-aside-item__title">
       {{ item.title }}

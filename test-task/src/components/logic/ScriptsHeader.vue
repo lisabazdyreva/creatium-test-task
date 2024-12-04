@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import {
-  ElSwitch,
-  ElButton,
-  ElBreadcrumb,
-  ElBreadcrumbItem,
-} from 'element-plus';
+import { ElSwitch, ElButton } from 'element-plus';
 import { ref } from 'vue';
-import TickIcon from '@/components/icons/TickIcon.vue';
+
+import TickIcon from '../icons/scripts/TickIcon.vue';
 import BreadcrumbsList from '@/components/common/BreadcrumbsList.vue';
 
 const isScriptRunning = ref(true);
@@ -69,6 +65,8 @@ const isScriptRunning = ref(true);
   height: 78px;
   padding: 20px 30px;
   border-bottom: 1px solid var(--border-color);
+
+  font-family: 'PingFang', Arial, sans-serif;
 }
 
 .actions {

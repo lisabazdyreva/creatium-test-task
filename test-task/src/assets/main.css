@@ -45,6 +45,31 @@
   --font-size-22: 1.275rem;
   --font-size-24: 1.5rem;
   --font-size-32: 2rem;
+
+  /*  element-plus */
+  --el-color-primary: var(--accent-color);
+}
+
+@font-face {
+  font-family: 'PingFang';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('PingFang SC'),
+    url('../assets/fonts/PingFang.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'PingFang';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/PingFangMedium.woff') format('woff');
+}
+
+body {
+  font-family: 'PingFang', Arial, sans-serif;
 }
 
 ul,

@@ -17,5 +17,6 @@
   color: var(--sec-accent-color);
   font-size: var(--font-size-12);
   line-height: var(--font-size-16);
+  font-weight: 400;
 }
 </style>

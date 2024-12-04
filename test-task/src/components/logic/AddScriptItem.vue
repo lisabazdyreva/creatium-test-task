@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { IAddScriptItem } from '@/types/script.ts';
+
 defineProps<{
-  item: any; // todo lisa
+  item: IAddScriptItem;
 }>();
 </script>
 

@@ -5,149 +5,151 @@
     "action": "input",
     "icon": {
       "component": "SharpPlayIcon"
-    },
-    "children": [
-      {
-        "id": "main-1",
-        "title": "HTTP-запрос",
-        "action": "http",
-        "value": "https://hook.creatium.io/25gsf1ph594rnktv2cdtxum5ucjpav5f",
-        "icon": {
-          "component": "ResponseIcon"
-        }
-      },
-      {
-        "id": "main-2",
-        "title": "Таймер",
-        "action": "timer",
-        "value": "5 секунд",
-        "icon": {
-          "component": "TimerIcon"
-        }
-      },
-      {
-        "id": "main-3",
-        "title": "Если",
-        "value": "{{form.field_by_'id' = “Регистрация”}}",
-        "icon": {
-          "component": "ConditionIcon"
-        },
-        "children": [
-          {
-            "id": "main-4",
-            "title": "Найти запись",
-            "action": "searchRecords",
-            "value": "В таблице Объявления",
-            "icon": {
-              "component": "DatabaseIcon",
-              "type": "search"
-            }
-          },
-          {
-            "id": "main-5",
-            "title": "Создать пользователя",
-            "action": "newUser",
-            "value": "В таблице Пользователи",
-            "icon": {
-              "component": "UserIcon",
-              "type": "create"
-            }
-          }
-        ]
-      },
-      {
-        "id": "main-6",
-        "title": "Иначе",
-        "value": "{{form.field_by_'id' = “Новый администратор”}}",
-        "icon": {
-          "component": "ConditionIcon"
-        },
-        "children": [
-          {
-            "id": "main-7",
-            "title": "Найти запись",
-            "action": "searchRecords",
-            "value": "В таблице Администраторы",
-            "icon": {
-              "component": "DatabaseIcon",
-              "type": "search"
-            }
-          },
-          {
-            "id": "main-8",
-            "title": "Создать запись",
-            "action": "newRecord",
-            "value": "В таблице Администраторы",
-            "icon": {
-              "component": "DatabaseIcon",
-              "type": "create"
-            }
-          }
-        ]
-      },
-      {
-        "id": "main-9",
-        "title": "Попробовать",
-        "action": "try",
-        "value": "{{'id' = “Добавление статуса”}}",
-        "icon": {
-          "component": "BugIcon"
-        },
-        "children": [
-          {
-            "id": "main-10",
-            "title": "Найти запись",
-            "action": "searchRecords",
-            "value": "В таблице Статусы",
-            "icon": {
-              "component": "DatabaseIcon",
-              "type": "search"
-            }
-          },
-          {
-            "id": "main-11",
-            "title": "Создать запись",
-            "action": "newRecord",
-            "value": "В таблице Статусы",
-            "icon": {
-              "component": "DatabaseIcon",
-              "type": "create"
-            }
-          }
-        ]
-      },
-      {
-        "id": "main-12",
-        "title": "В случае ошибки",
-        "action": "error",
-        "icon": {
-          "component": "BugIcon"
-        },
-        "children": [
-          {
-            "id": "main-13",
-            "title": "Найти запись",
-            "action": "searchRecords",
-            "value": "В таблице Статусы",
-            "icon": {
-              "component": "DatabaseIcon",
-              "type": "search"
-            },
-            "children": [
-              {
-                "id": "main-14",
-                "title": "Найти запись",
-                "action": "searchRecords",
-                "value": "В таблице Статусы",
-                "icon": {
-                  "component": "DatabaseIcon",
-                  "type": "search"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    }
+  },
+  {
+    "id": "main-1",
+    "pid": "main",
+    "title": "HTTP-запрос",
+    "action": "http",
+    "value": "https://hook.creatium.io/25gsf1ph594rnktv2cdtxum5ucjpav5f",
+    "icon": {
+      "component": "ResponseIcon"
+    }
+  },
+  {
+    "id": "main-2",
+    "pid": "main",
+    "title": "Таймер",
+    "action": "timer",
+    "value": "5 секунд",
+    "icon": {
+      "component": "TimerIcon"
+    }
+  },
+  {
+    "id": "main-3",
+    "pid": "main",
+    "title": "Если",
+    "value": "{{form.field_by_'id' = “Регистрация”}}",
+    "icon": {
+      "component": "ConditionIcon"
+    }
+  },
+  {
+    "id": "main-4",
+    "pid": "main-3",
+    "title": "Найти запись",
+    "action": "searchRecords",
+    "value": "В таблице Объявления",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "search"
+    }
+  },
+  {
+    "id": "main-5",
+    "pid": "main-3",
+    "title": "Создать пользователя",
+    "action": "newUser",
+    "value": "В таблице Пользователи",
+    "icon": {
+      "component": "UserIcon",
+      "type": "create"
+    }
+  },
+  {
+    "id": "main-6",
+    "pid": "main",
+    "title": "Иначе",
+    "value": "{{form.field_by_'id' = “Новый администратор”}}",
+    "icon": {
+      "component": "ConditionIcon"
+    }
+  },
+  {
+    "id": "main-7",
+    "pid": "main-6",
+    "title": "Найти запись",
+    "action": "searchRecords",
+    "value": "В таблице Администраторы",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "search"
+    }
+  },
+  {
+    "id": "main-8",
+    "pid": "main-6",
+    "title": "Создать запись",
+    "action": "newRecord",
+    "value": "В таблице Администраторы",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "create"
+    }
+  },
+  {
+    "id": "main-9",
+    "pid": "main",
+    "title": "Попробовать",
+    "action": "try",
+    "value": "{{'id' = “Добавление статуса”}}",
+    "icon": {
+      "component": "BugIcon"
+    }
+  },
+  {
+    "id": "main-10",
+    "pid": "main-9",
+    "title": "Найти запись",
+    "action": "searchRecords",
+    "value": "В таблице Статусы",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "search"
+    }
+  },
+  {
+    "id": "main-11",
+    "pid": "main-9",
+    "title": "Создать запись",
+    "action": "newRecord",
+    "value": "В таблице Статусы",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "create"
+    }
+  },
+  {
+    "id": "main-12",
+    "pid": "main",
+    "title": "В случае ошибки",
+    "action": "error",
+    "icon": {
+      "component": "BugIcon"
+    }
+  },
+  {
+    "id": "main-13",
+    "pid": "main-12",
+    "title": "Найти запись",
+    "action": "searchRecords",
+    "value": "В таблице Статусы",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "search"
+    }
+  },
+  {
+    "id": "main-14",
+    "pid": "main-12",
+    "title": "Найти запись",
+    "action": "searchRecords",
+    "value": "В таблице Статусы",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "search"
+    }
   }
 ]

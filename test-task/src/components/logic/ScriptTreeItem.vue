@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import ActionBadge from '@/components/common/ActionBadge.vue';
 import { ref } from 'vue';
+import ActionBadge from '@/components/common/ActionBadge.vue';
+import type { IScriptTreeItemNested } from '@/types/script.ts';
 
-const props = defineProps<{
-  item: any; // todo lisa
+defineProps<{
+  item: IScriptTreeItemNested;
   nestedLevel: number;
   dragOverId: string | null;
 }>();
@@ -12,8 +13,7 @@ defineEmits<{
   (e: 'handle-dragstart', id: string): void;
   (e: 'handle-dragover', id: string): void;
   (e: 'handle-dragenter', id: string): void;
-  (e: 'handle-drop', id: string): void;
-  (e: 'handle-dragend'): void;
+  (e: 'handle-drop'): void;
 }>();
 
 const isShow = ref(true);
@@ -25,18 +25,17 @@ const isShow = ref(true);
       class="script-item"
       :class="{ 'script-item--drag-over': dragOverId === item.id }"
       :style="{
-        marginLeft: item?.children
+        marginLeft: item?.children?.length
           ? `${nestedLevel * 10}px`
           : `${nestedLevel * 24 + 10}px`,
       }"
-      draggable="true"
+      :draggable="Boolean(item.pid)"
       @dragstart="$emit('handle-dragstart', item.id)"
       @dragenter.prevent="$emit('handle-dragenter', item.id)"
       @dragover.prevent="$emit('handle-dragover', item.id)"
       @drop="$emit('handle-drop', item.id)"
-      @dragend="$emit('handle-dragend')"
     >
-      <div v-if="item?.children && item.id !== 'main'">
+      <div v-if="item?.children?.length && item.pid">
         <button @click="() => (isShow = !isShow)">C</button>
       </div>
       <div class="script-item__icon-wrapper">
@@ -59,15 +58,15 @@ const isShow = ref(true);
       </div>
     </div>
 
-    <div v-if="item?.children" class="script__item--children">
+    <div v-if="item?.children?.length" class="script__item--children">
       <ul v-show="isShow">
-        <ScriptItem
+        <ScriptTreeItem
           v-for="childItem in item.children"
           :key="childItem.id"
           :item="childItem"
           :dragOverId="dragOverId"
           :nested-level="nestedLevel + 1"
-          @handle-drop="(id: string) => $emit('handle-drop', id)"
+          @handle-drop="$emit('handle-drop')"
           @handle-dragenter="(id: string) => $emit('handle-dragenter', id)"
           @handle-dragstart="(id: string) => $emit('handle-dragstart', id)"
           @handle-dragover="(id: string) => $emit('handle-dragover', id)"

@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 export function useDragnDrop() {
   const dragId = ref<string | null>(null);
@@ -17,10 +17,10 @@ export function useDragnDrop() {
     dragOverId.value = null;
   };
 
-  const handleDrop = (id: string) => {
-    if (dragId.value !== null && dragId.value !== id) {
-      console.log(dragId.value, dragOverId.value);
-      // replace items
+  const handleDrop = (cd: () => void) => {
+    console.log('dropped');
+    if (dragId.value !== null && dragId.value !== dragOverId.value) {
+      cd();
     }
     _clearIds();
   };
@@ -28,6 +28,18 @@ export function useDragnDrop() {
   const handleDragEnd = () => {
     _clearIds();
   };
+
+  const handleDocumentDrop = () => {
+    _clearIds();
+  };
+
+  onMounted(() => {
+    document.addEventListener('dragend', handleDocumentDrop);
+  });
+
+  onUnmounted(() => {
+    document.removeEventListener('dragend', handleDocumentDrop);
+  });
 
   return {
     dragId,

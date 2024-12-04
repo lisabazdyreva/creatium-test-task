@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": "Создать запись",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "DatabaseActionType.Create"
+    }
+  },
+  {
+    "id": "2",
+    "title": "Обновить записи",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "DatabaseActionType.Update"
+    }
+  },
+  {
+    "id": "3",
+    "title": "Найти запись",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "DatabaseActionType.Search"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Удалить запись",
+    "icon": {
+      "component": "DatabaseIcon",
+      "type": "DatabaseActionType.Delete"
+    }
+  }
+]

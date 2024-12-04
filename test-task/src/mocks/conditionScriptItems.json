@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "title": "Если",
+    "icon": {
+      "component": "ConditionIcon"
+    }
+  },
+  {
+    "id": "2",
+    "title": "Иначе",
+    "icon": {
+      "component": "ConditionIcon"
+    }
+  },
+  {
+    "id": "3",
+    "title": "Таймер",
+    "icon": {
+      "component": "TimerIcon"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Выполнить код",
+    "icon": {
+      "component": "CodeIcon"
+    }
+  }
+]

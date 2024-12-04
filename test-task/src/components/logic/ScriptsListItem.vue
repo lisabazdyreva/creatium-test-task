@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import PlayIcon from '@/components/icons/navigation/PlayIcon.vue';
-import DotsIcon from '@/components/icons/DotsIcon.vue';
-import { ProcessStatus, ProcessStatusLabel } from '@/const/process.ts';
-import FullFolderIcon from '@/components/icons/FullFolderIcon.vue';
-import ArrowIcon from '@/components/icons/ArrowIcon.vue';
 import { ref } from 'vue';
 
+import { ProcessStatusLabel } from '@/const/process.ts';
+
+import PlayIcon from '@/components/icons/navigation/PlayIcon.vue';
+import DotsIcon from '@/components/icons/common/DotsIcon.vue';
+import FullFolderIcon from '@/components/icons/scripts/FullFolderIcon.vue';
+import ArrowIcon from '@/components/icons/common/ArrowIcon.vue';
+import type { IScriptDirectoryItem } from '@/types/script.ts';
+
 defineProps<{
-  item: {
-    title: string;
-    status?: ProcessStatus;
-    children?: any[]; // todo lisa
-  };
-  activeId: string;
+  item: IScriptDirectoryItem;
+  activeId?: string;
 }>();
 
 defineEmits<{
@@ -71,7 +70,7 @@ const isOpen = ref(false);
       </button>
       <ul v-show="isOpen" class="process-item__children-list">
         <li v-for="childItem in item.children" :key="childItem.id">
-          <ProcessItem
+          <ScriptsListItem
             class="process-item"
             :item="childItem"
             :active-id="activeId"

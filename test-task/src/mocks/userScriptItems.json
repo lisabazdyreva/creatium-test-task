@@ -2,25 +2,25 @@
   {
     "id": "1",
     "title": "Создать пользователя",
+    "action": "newUser",
     "icon": {
-      "component": "UserIcon",
-      "type": "UserActionType.Create"
+      "src": "/public/icons/createUserIcon.svg"
     }
   },
   {
     "id": "2",
     "title": "Изменить почту",
+    "action": "updateUserMail",
     "icon": {
-      "component": "UserIcon",
-      "type": "UserActionType.ChangeEmail"
+      "src": "/public/icons/updateUserEmailIcon.svg"
     }
   },
   {
     "id": "3",
     "title": "Восстановить пароль",
+    "action": "restoreUserPassword",
     "icon": {
-      "component": "UserIcon",
-      "type": "UserActionType.RestorePassword"
+      "src": "/public/icons/restoreUserPasswordIcon.svg"
     }
   }
 ]

@@ -3,8 +3,9 @@
     "id": "main",
     "title": "Запуск сценария",
     "action": "input",
+    "showAction": true,
     "icon": {
-      "component": "SharpPlayIcon"
+      "src": "/public/icons/sharpPlayIcon.svg"
     }
   },
   {
@@ -12,9 +13,10 @@
     "pid": "main",
     "title": "HTTP-запрос",
     "action": "http",
+    "showAction": true,
     "value": "https://hook.creatium.io/25gsf1ph594rnktv2cdtxum5ucjpav5f",
     "icon": {
-      "component": "ResponseIcon"
+      "src": "/public/icons/responseIcon.svg"
     }
   },
   {
@@ -22,18 +24,21 @@
     "pid": "main",
     "title": "Таймер",
     "action": "timer",
+    "showAction": true,
     "value": "5 секунд",
     "icon": {
-      "component": "TimerIcon"
+      "src": "/public/icons/timerIcon.svg"
     }
   },
   {
     "id": "main-3",
     "pid": "main",
     "title": "Если",
+    "action": "ifCondition",
+    "showAction": false,
     "value": "{{form.field_by_'id' = “Регистрация”}}",
     "icon": {
-      "component": "ConditionIcon"
+      "src": "/public/icons/conditionIcon.svg"
     }
   },
   {
@@ -41,10 +46,10 @@
     "pid": "main-3",
     "title": "Найти запись",
     "action": "searchRecords",
+    "showAction": true,
     "value": "В таблице Объявления",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "search"
+      "src": "/public/icons/searchRecordIcon.svg"
     }
   },
   {
@@ -52,19 +57,21 @@
     "pid": "main-3",
     "title": "Создать пользователя",
     "action": "newUser",
+    "showAction": true,
     "value": "В таблице Пользователи",
     "icon": {
-      "component": "UserIcon",
-      "type": "create"
+      "src": "/public/icons/createUserIcon.svg"
     }
   },
   {
     "id": "main-6",
     "pid": "main",
     "title": "Иначе",
+    "action": "elseCondition",
+    "showAction": false,
     "value": "{{form.field_by_'id' = “Новый администратор”}}",
     "icon": {
-      "component": "ConditionIcon"
+      "src": "/public/icons/conditionIcon.svg"
     }
   },
   {
@@ -72,10 +79,10 @@
     "pid": "main-6",
     "title": "Найти запись",
     "action": "searchRecords",
+    "showAction": true,
     "value": "В таблице Администраторы",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "search"
+      "src": "/public/icons/searchRecordIcon.svg"
     }
   },
   {
@@ -83,10 +90,10 @@
     "pid": "main-6",
     "title": "Создать запись",
     "action": "newRecord",
+    "showAction": true,
     "value": "В таблице Администраторы",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "create"
+      "src": "/public/icons/newRecordIcon.svg"
     }
   },
   {
@@ -94,9 +101,10 @@
     "pid": "main",
     "title": "Попробовать",
     "action": "try",
+    "showAction": true,
     "value": "{{'id' = “Добавление статуса”}}",
     "icon": {
-      "component": "BugIcon"
+      "src": "/public/icons/bugIcon.svg"
     }
   },
   {
@@ -104,10 +112,10 @@
     "pid": "main-9",
     "title": "Найти запись",
     "action": "searchRecords",
+    "showAction": true,
     "value": "В таблице Статусы",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "search"
+      "src": "/public/icons/searchRecordIcon.svg"
     }
   },
   {
@@ -115,10 +123,21 @@
     "pid": "main-9",
     "title": "Создать запись",
     "action": "newRecord",
+    "showAction": true,
     "value": "В таблице Статусы",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "create"
+      "src": "/public/icons/newRecordIcon.svg"
+    }
+  },
+  {
+    "id": "main-20",
+    "pid": "main-11",
+    "title": "Создать запись",
+    "action": "newRecord",
+    "showAction": true,
+    "value": "В таблице Статусы",
+    "icon": {
+      "src": "/public/icons/newRecordIcon.svg"
     }
   },
   {
@@ -126,8 +145,9 @@
     "pid": "main",
     "title": "В случае ошибки",
     "action": "error",
+    "showAction": true,
     "icon": {
-      "component": "BugIcon"
+      "src": "/public/icons/bugIcon.svg"
     }
   },
   {
@@ -135,10 +155,10 @@
     "pid": "main-12",
     "title": "Найти запись",
     "action": "searchRecords",
+    "showAction": true,
     "value": "В таблице Статусы",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "search"
+      "src": "/public/icons/searchRecordIcon.svg"
     }
   },
   {
@@ -146,10 +166,10 @@
     "pid": "main-12",
     "title": "Найти запись",
     "action": "searchRecords",
+    "showAction": true,
     "value": "В таблице Статусы",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "search"
+      "src": "/public/icons/searchRecordIcon.svg"
     }
   }
 ]

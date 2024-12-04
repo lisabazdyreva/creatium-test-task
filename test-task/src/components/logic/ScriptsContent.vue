@@ -22,12 +22,13 @@ defineEmits<{
     <div v-else class="scripts-content__scripts scripts">
       <ul class="scripts__list">
         <ScriptTreeItem
-          v-for="item in data"
+          v-for="(item, i) in data"
           :key="item.id"
           class="scripts__item"
           :item="item"
+          :is-last="i === item.children.length - 1"
           :drag-over-id="dragOverId"
-          :nested-level="1"
+          :nested-level="0"
           @handle-dragstart="(value: string) => $emit('drag-start', value)"
           @handle-dragover="(value: string) => $emit('drag-over', value)"
           @handle-drop="$emit('drag-drop')"

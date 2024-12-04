@@ -1,12 +1,14 @@
+import { ActionType } from '@/const/scriptType.ts';
+
 export interface IScriptTreeItem {
   id: string;
   pid?: string;
   title: string;
-  action?: string;
+  action: ActionType;
+  showAction: boolean;
   value?: string;
   icon: {
-    component: string;
-    type?: string; // todo lisa add enum
+    src: string;
   };
 }
 
@@ -17,9 +19,9 @@ export interface IScriptTreeItemNested extends IScriptTreeItem {
 export interface IAddScriptItem {
   id: string;
   title: string;
+  action: ActionType;
   icon: {
-    component: string;
-    type?: string; // todo lisa add enum
+    src: string;
   };
 }
 

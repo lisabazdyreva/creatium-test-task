@@ -2,29 +2,33 @@
   {
     "id": "1",
     "title": "Если",
+    "action": "ifCondition",
     "icon": {
-      "component": "ConditionIcon"
+      "src": "/public/icons/conditionIcon.svg"
     }
   },
   {
     "id": "2",
     "title": "Иначе",
+    "action": "elseCondition",
     "icon": {
-      "component": "ConditionIcon"
+      "src": "/public/icons/conditionIcon.svg"
     }
   },
   {
     "id": "3",
     "title": "Таймер",
+    "action": "timer",
     "icon": {
-      "component": "TimerIcon"
+      "src": "/public/icons/timerIcon.svg"
     }
   },
   {
     "id": "4",
     "title": "Выполнить код",
+    "action": "runCode",
     "icon": {
-      "component": "CodeIcon"
+      "src": "/public/icons/codeIcon.svg"
     }
   }
 ]

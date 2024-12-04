@@ -9,11 +9,7 @@ defineProps<{
 <template>
   <div class="script-aside-item">
     <div class="script-aside-item__icon-wrapper">
-      <component
-        class="script-aside-item__icon"
-        :is="item.icon.component"
-        :type="item.icon?.type"
-      />
+      <img class="script-aside-item__icon" :src="item.icon.src" />
     </div>
     <div class="script-aside-item__title">
       {{ item.title }}

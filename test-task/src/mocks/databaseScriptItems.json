@@ -2,33 +2,33 @@
   {
     "id": "1",
     "title": "Создать запись",
+    "action": "newRecord",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "DatabaseActionType.Create"
+      "src": "/public/icons/newRecordIcon.svg"
     }
   },
   {
     "id": "2",
-    "title": "Обновить записи",
+    "title": "Обновить запись",
+    "action": "updateRecord",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "DatabaseActionType.Update"
+      "src": "/public/icons/updateRecordIcon.svg"
     }
   },
   {
     "id": "3",
-    "title": "Найти запись",
+    "title": "Найти записи",
+    "action": "searchRecords",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "DatabaseActionType.Search"
+      "src": "/public/icons/searchRecordIcon.svg"
     }
   },
   {
     "id": "4",
     "title": "Удалить запись",
+    "action": "deleteRecord",
     "icon": {
-      "component": "DatabaseIcon",
-      "type": "DatabaseActionType.Delete"
+      "src": "/public/icons/deleteRecordIcon.svg"
     }
   }
 ]

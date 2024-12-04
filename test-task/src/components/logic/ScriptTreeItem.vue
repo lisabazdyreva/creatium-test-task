@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+
 import ActionBadge from '@/components/common/ActionBadge.vue';
+import StructureLines from '@/components/common/StructureLines.vue';
+import ShowDirectoryButton from '@/components/common/ShowDirectoryButton.vue';
+
 import type { IScriptTreeItemNested } from '@/types/script.ts';
 
-defineProps<{
+const props = defineProps<{
   item: IScriptTreeItemNested;
   nestedLevel: number;
+  isLast: boolean;
   dragOverId: string | null;
 }>();
 
@@ -17,38 +22,45 @@ defineEmits<{
 }>();
 
 const isShow = ref(true);
+
+const marginLeft = computed(() =>
+  props.item.pid && props.item?.children?.length
+    ? `${props.nestedLevel * 45 - (17 + 14)}px`
+    : `${props.nestedLevel * 45}px`,
+);
 </script>
 
 <template>
-  <li>
+  <li class="script-tree-item">
     <div
-      class="script-item"
-      :class="{ 'script-item--drag-over': dragOverId === item.id }"
-      :style="{
-        marginLeft: item?.children?.length
-          ? `${nestedLevel * 10}px`
-          : `${nestedLevel * 24 + 10}px`,
+      class="script-tree-item__wrapper"
+      :class="{
+        'script-tree-item__wrapper--drag-over': dragOverId === item.id,
+        'script-tree-item__wrapper--root': !item?.pid,
       }"
+      :style="{ marginLeft }"
       :draggable="Boolean(item.pid)"
       @dragstart="$emit('handle-dragstart', item.id)"
       @dragenter.prevent="$emit('handle-dragenter', item.id)"
       @dragover.prevent="$emit('handle-dragover', item.id)"
       @drop="$emit('handle-drop', item.id)"
     >
-      <div v-if="item?.children?.length && item.pid">
-        <button @click="() => (isShow = !isShow)">C</button>
-      </div>
-      <div class="script-item__icon-wrapper">
-        <component
-          :is="item.icon.component"
-          :type="item.icon.type"
-          class="script-item__icon"
+      <ShowDirectoryButton
+        v-if="item?.children?.length && item.pid"
+        :is-show="isShow"
+        @click="() => (isShow = !isShow)"
+      />
+      <div class="script-tree-item__icon-wrapper">
+        <img
+          class="script-tree-item__icon"
+          :src="item.icon.src"
+          :alt="item.title"
         />
       </div>
-      <div class="script-item__info info">
+      <div class="script-tree-item__info info">
         <div class="info__main-info">
           <div class="info__title">{{ item.title }}</div>
-          <ActionBadge v-if="item?.action" class="info__badge">
+          <ActionBadge v-if="item.showAction" class="info__badge">
             {{ item.action }}
           </ActionBadge>
         </div>
@@ -58,11 +70,12 @@ const isShow = ref(true);
       </div>
     </div>
 
-    <div v-if="item?.children?.length" class="script__item--children">
+    <template v-if="item.children?.length">
       <ul v-show="isShow">
         <ScriptTreeItem
-          v-for="childItem in item.children"
+          v-for="(childItem, i) in item.children"
           :key="childItem.id"
+          :is-last="i === item.children.length - 1"
           :item="childItem"
           :dragOverId="dragOverId"
           :nested-level="nestedLevel + 1"
@@ -72,12 +85,41 @@ const isShow = ref(true);
           @handle-dragover="(id: string) => $emit('handle-dragover', id)"
         />
       </ul>
-    </div>
+    </template>
+
+    <StructureLines
+      :is-last="isLast"
+      :children-length="item.children?.length"
+      :is-root="!item.pid"
+      :pid="item?.pid"
+      :size="45"
+      :gap="20"
+      :nested-level="nestedLevel"
+    />
   </li>
 </template>
 
 <style scoped>
-.script-item__icon-wrapper {
+.script-tree-item {
+  position: relative;
+}
+
+.script-tree-item__wrapper {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.script-tree-item__wrapper--root {
+  margin-bottom: 26px;
+}
+
+.script-tree-item__wrapper--drag-over {
+  margin-bottom: 26px;
+}
+
+.script-tree-item__icon-wrapper {
   display: flex;
   width: 45px;
   height: 45px;
@@ -87,18 +129,11 @@ const isShow = ref(true);
   border: 1px solid var(--border-color-dark);
 }
 
-.script-item__icon {
+.script-tree-item__icon {
   display: block;
 }
 
-.script-item {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  margin-bottom: 26px;
-}
-
-.script-item__info {
+.script-tree-item__info {
   display: flex;
   flex-direction: column;
 }
@@ -120,9 +155,6 @@ const isShow = ref(true);
   line-height: var(--font-size-16);
   color: var(--text-color-gray);
   height: 16px;
-}
-
-.script-item--drag-over {
-  background-color: red;
+  /* todo lisa add truncate */
 }
 </style>

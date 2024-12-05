@@ -1,0 +1,79 @@
+[
+  {
+    "id": "1",
+    "type": "bot",
+    "title": "Telegram-бот",
+    "status": "started"
+  },
+  {
+    "id": "2",
+    "title": "Сайт",
+    "children": [
+      {
+        "id": "2a",
+        "type": "script",
+        "title": "1 сценарий",
+        "status": "started"
+      },
+      {
+        "id": "2b",
+        "type": "script",
+        "title": "2 сценарий",
+        "status": "started"
+      },
+      {
+        "id": "2c",
+        "type": "script",
+        "title": "3 сценарий",
+        "status": "started"
+      },
+      {
+        "id": "2d",
+        "type": "script",
+        "title": "4 сценарий",
+        "status": "paused"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Новый сценарий",
+    "children": [
+      {
+        "id": "3a",
+        "type": "script",
+        "title": "1 сценарий",
+        "status": "started"
+      },
+      {
+        "id": "3b",
+        "type": "script",
+        "title": "2 сценарий",
+        "status": "started"
+      },
+      {
+        "id": "3c",
+        "type": "script",
+        "title": "3 сценарий",
+        "status": "paused"
+      },
+      {
+        "id": "3d",
+        "type": "script",
+        "title": "4 сценарий",
+        "status": "paused"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Регистрация",
+    "status": "paused"
+  },
+  {
+    "id": "5",
+    "type": "api",
+    "title": "API: Список объявлений",
+    "status": "started"
+  }
+]

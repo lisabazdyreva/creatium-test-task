@@ -2,3 +2,80 @@
   box-sizing: border-box;
   margin: 0;
 }
+
+:root {
+  --header-width: 70px;
+  --left-sidebar-width: 320px;
+
+  --content-header-height: 78px;
+  --right-sidebar-width: 320px;
+
+  --sec-accent-color: #8b63ef;
+
+  --accent-color: #7b55d9;
+  --accent-color-hover: #6545b2;
+
+  --green-accent-color: #67c23a;
+  --green-accent-color-hover: #529a2f;
+
+  --yellow-accent-color: #ffb03a;
+
+  --violet-accent-color: #e8e0fc;
+
+  --dark-gray-color: #606266;
+  --light-gray-color: #b1b5be;
+
+  --text-color-primary: #303133;
+  --text-color-primary-hover: #1a1b1c;
+
+  --text-color-gray: #909399;
+
+  --border-color: #dcdfe6;
+  --border-color-dark: #cdd0d6;
+  --border-color-light: #d4d7de;
+
+  --bg-white: #ffffff;
+  --bg-light-gray: #f5f7fa;
+  --bg-white-hover: #f4f3f6;
+  --bg-white-active: #f4f0ff;
+
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-20: 1.25rem;
+  --font-size-22: 1.275rem;
+  --font-size-24: 1.5rem;
+  --font-size-32: 2rem;
+
+  /*  element-plus */
+  --el-color-primary: var(--accent-color);
+}
+
+@font-face {
+  font-family: 'PingFang';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('PingFang SC'),
+    url('../assets/fonts/PingFang.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'PingFang';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/PingFangMedium.woff') format('woff');
+}
+
+body {
+  font-family: 'PingFang', Arial, sans-serif;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": "Если",
+    "action": "ifCondition",
+    "icon": {
+      "src": "/public/icons/conditionIcon.svg"
+    }
+  },
+  {
+    "id": "2",
+    "title": "Иначе",
+    "action": "elseCondition",
+    "icon": {
+      "src": "/public/icons/conditionIcon.svg"
+    }
+  },
+  {
+    "id": "3",
+    "title": "Таймер",
+    "action": "timer",
+    "icon": {
+      "src": "/public/icons/timerIcon.svg"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Выполнить код",
+    "action": "runCode",
+    "icon": {
+      "src": "/public/icons/codeIcon.svg"
+    }
+  }
+]

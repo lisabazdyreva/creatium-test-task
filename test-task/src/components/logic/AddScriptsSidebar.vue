@@ -1,81 +1,62 @@
 <script setup lang="ts">
 import AddScriptItem from '@/components/logic/AddScriptItem.vue';
+import ButtonAccordion from '@/components/common/ButtonAccordion.vue';
 
 import databaseScriptItems from '@/mocks/databaseScriptItems.json';
 import conditionScriptItems from '@/mocks/conditionScriptItems.json';
 import userScriptItems from '@/mocks/userScriptItems.json';
 
 import type { IAddScriptItem } from '@/types/script.ts';
-import ButtonAccordion from '@/components/common/ButtonAccordion.vue';
+import type { ActionType } from '@/const/scriptType.ts';
 
-const emit = defineEmits<{
-  (e: 'drag-start', id: string): void;
+defineEmits<{
+  (e: 'drag-start', id: string, type: ActionType): void;
 }>();
 
 const databaseScriptsList = databaseScriptItems as Array<IAddScriptItem>;
 const conditionActionList = conditionScriptItems as Array<IAddScriptItem>;
 const usersActionList = userScriptItems as Array<IAddScriptItem>;
 
-const handleDragStart = (id: string) => {
-  // todo lisa implement
-  // emit id
-  emit('drag-start', id);
-};
+const allScripts = [
+  {
+    title: 'База данных',
+    list: databaseScriptsList,
+  },
+  {
+    title: 'Условия и действия',
+    list: conditionActionList,
+  },
+  {
+    title: 'Пользователи',
+    list: usersActionList,
+  },
+];
 </script>
 
 <template>
-  <aside class="home-scripts-aside">
-    <div class="home-scripts-aside__header">
-      <h3 class="home-scripts-aside__title">Добавить действие</h3>
+  <aside class="add-scripts-sidebar">
+    <div class="add-scripts-sidebar__header">
+      <h3 class="add-scripts-sidebar__title">Добавить действие</h3>
     </div>
 
-    <!--   todo lisa add recursion -->
-    <div class="home-scripts-aside__content content">
+    <div class="add-scripts-sidebar__content content">
       <div class="content__wrapper">
-        <ButtonAccordion class="content__action-item action-item">
-          <template #title> База данных </template>
+        <ButtonAccordion
+          v-for="script in allScripts"
+          :key="script.title"
+          class="content__action-item action-item"
+        >
+          <template #title> {{ script.title }} </template>
           <template #list>
-            <ul class="action-item__list">
-              <li
-                v-for="item in databaseScriptsList"
+            <ul class="action-item__list actions-list">
+              <AddScriptItem
+                :item="item"
+                v-for="item in script.list"
                 :key="item.id"
+                class="actions-list__item"
                 draggable="true"
-                @dragstart="() => handleDragStart(item.id)"
-              >
-                <AddScriptItem :item="item" />
-              </li>
-            </ul>
-          </template>
-        </ButtonAccordion>
-
-        <ButtonAccordion class="content__action-item action-item">
-          <template #title> Условия и действия </template>
-          <template #list>
-            <ul class="action-item__list">
-              <li
-                v-for="item in conditionActionList"
-                :key="item.id"
-                draggable="true"
-                @dragstart="() => handleDragStart(item.id)"
-              >
-                <AddScriptItem :item="item" />
-              </li>
-            </ul>
-          </template>
-        </ButtonAccordion>
-
-        <ButtonAccordion class="content__action-item action-item">
-          <template #title> Пользователи </template>
-          <template #list>
-            <ul class="action-item__list">
-              <li
-                v-for="item in usersActionList"
-                :key="item.id"
-                draggable="true"
-                @dragstart="() => handleDragStart(item.id)"
-              >
-                <AddScriptItem :item="item" />
-              </li>
+                @dragstart="() => $emit('drag-start', item.id, item.action)"
+              />
             </ul>
           </template>
         </ButtonAccordion>
@@ -85,42 +66,25 @@ const handleDragStart = (id: string) => {
 </template>
 
 <style scoped>
-.home-scripts-aside {
+.add-scripts-sidebar {
   font-family: 'Rubik', 'Arial', sans-serif;
+
   --content-gutter: 0;
-  --fixed-header-height: 64px;
+  overflow: auto;
+  scrollbar-width: thin;
 
-  /*//padding: var(--content-gutter);*/
-  position: relative;
-
-  .home-scripts-aside__header {
-    position: sticky;
-    top: 10px;
+  .add-scripts-sidebar__header {
     width: 100%;
-    height: var(--fixed-header-height);
     padding-left: 20px;
     padding-top: 24px;
-    /* background-color: red;*/
-    z-index: 1;
   }
 
-  .home-scripts-aside__title {
+  .add-scripts-sidebar__title {
     font-size: var(--font-size-16);
     line-height: var(--font-size-24);
     font-weight: 500;
-    /*todo lisa line-height*/
-    margin-bottom: 17px;
     color: var(--text-color-primary);
-  }
-
-  .home-scripts-aside__content {
-    position: relative;
-    /*top: var(--fixed-header-height);*/
-    height: calc(
-      100svh - var(--content-header-height) - var(--content-gutter) -
-        var(--fixed-header-height)
-    );
-    overflow: auto;
+    margin-bottom: 17px;
   }
 
   .content__wrapper {
@@ -132,8 +96,19 @@ const handleDragStart = (id: string) => {
     border-bottom: 1px solid var(--border-color);
   }
 
+  .action-item:last-child {
+    border-bottom: none;
+  }
+
   .action-item__list {
     padding: 0 20px;
+  }
+
+  .actions-list__item {
+    cursor: pointer;
+  }
+  .actions-list__item:hover {
+    background-color: var(--bg-white-hover);
   }
 }
 </style>

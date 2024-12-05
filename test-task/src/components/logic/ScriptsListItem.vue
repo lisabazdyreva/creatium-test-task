@@ -7,6 +7,7 @@ import PlayIcon from '@/components/icons/navigation/PlayIcon.vue';
 import DotsIcon from '@/components/icons/common/DotsIcon.vue';
 import FullFolderIcon from '@/components/icons/scripts/FullFolderIcon.vue';
 import ArrowIcon from '@/components/icons/common/ArrowIcon.vue';
+
 import type { IScriptDirectoryItem } from '@/types/script.ts';
 
 defineProps<{
@@ -21,26 +22,26 @@ const isOpen = ref(false);
 </script>
 
 <template>
-  <div class="process-item">
+  <li class="scripts-list-item">
     <div
       v-if="!item?.children"
-      class="process-item__last-child"
-      :class="{ 'process-item__active': activeId === item.id }"
+      class="scripts-list-item__last-child"
+      :class="{ 'scripts-list-item__active': activeId === item.id }"
       @click="$emit('set-active-item', item.id)"
     >
-      <div class="process-item__main-info">
-        <div class="process-item__icon-wrapper">
-          <PlayIcon v-if="item?.status" class="process-item__icon" />
+      <div class="scripts-list-item__main-info">
+        <div class="scripts-list-item__icon-wrapper">
+          <PlayIcon v-if="item?.status" class="scripts-list-item__icon" />
         </div>
-        <div class="process-item__title">{{ item.title }}</div>
-        <button class="process-item__options">
-          <DotsIcon class="process-item__dots-icon" />
+        <div class="scripts-list-item__title">{{ item.title }}</div>
+        <button class="scripts-list-item__options">
+          <DotsIcon class="scripts-list-item__dots-icon" />
         </button>
       </div>
       <div
         v-if="item?.status"
-        class="process-item__status"
-        :class="[`process-item__status--${item.status}`]"
+        class="scripts-list-item__status"
+        :class="[`scripts-list-item__status--${item.status}`]"
       >
         {{ ProcessStatusLabel[item.status] }}
       </div>
@@ -48,42 +49,42 @@ const isOpen = ref(false);
 
     <template v-if="item?.children">
       <button
-        class="process-item__nested-child"
+        class="scripts-list-item__nested-child"
         @click="() => (isOpen = !isOpen)"
       >
-        <span class="process-item__main-info">
-          <span class="process-item__icon-wrapper">
+        <span class="scripts-list-item__main-info">
+          <span class="scripts-list-item__icon-wrapper">
             <ArrowIcon
-              class="process-item__arrow-icon"
-              :class="{ 'process-item__arrow-icon--open': isOpen }"
+              class="scripts-list-item__arrow-icon"
+              :class="{ 'scripts-list-item__arrow-icon--open': isOpen }"
             />
-            <FullFolderIcon class="process-item__icon" />
+            <FullFolderIcon class="scripts-list-item__icon" />
           </span>
-          <span class="process-item__title">{{ item.title }}</span>
-          <span class="process-item__options">
-            <DotsIcon class="process-item__dots-icon" />
+          <span class="scripts-list-item__title">{{ item.title }}</span>
+          <span class="scripts-list-item__options">
+            <DotsIcon class="scripts-list-item__dots-icon" />
           </span>
         </span>
-        <span class="process-item__count"
+        <span class="scripts-list-item__count"
           >{{ item.children.length }} сценария</span
         >
       </button>
-      <ul v-show="isOpen" class="process-item__children-list">
-        <li v-for="childItem in item.children" :key="childItem.id">
-          <ScriptsListItem
-            class="process-item"
-            :item="childItem"
-            :active-id="activeId"
-            @click="$emit('set-active-item', childItem.id)"
-          />
-        </li>
+      <ul v-show="isOpen" class="scripts-list-item__children-list">
+        <ScriptsListItem
+          v-for="childItem in item.children"
+          :key="childItem.id"
+          class="scripts-list-item"
+          :item="childItem"
+          :active-id="activeId"
+          @click="$emit('set-active-item', childItem.id)"
+        />
       </ul>
     </template>
-  </div>
+  </li>
 </template>
 
 <style scoped>
-.process-item__last-child {
+.scripts-list-item__last-child {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -94,7 +95,7 @@ const isOpen = ref(false);
   }
 }
 
-.process-item__nested-child {
+.scripts-list-item__nested-child {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -102,38 +103,39 @@ const isOpen = ref(false);
   background-color: transparent;
   border: none;
   font: inherit;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--bg-white-hover);
   }
 }
 
-.process-item__active {
+.scripts-list-item__active {
   background-color: var(--bg-white-active);
   &:hover {
     background-color: var(--bg-white-active);
   }
 }
 
-.process-item__icon-wrapper {
+.scripts-list-item__icon-wrapper {
   display: flex;
   align-items: center;
   margin-right: 5px;
 }
 
-.process-item__icon {
+.scripts-list-item__icon {
   width: 16px;
   height: 16px;
   color: var(--dark-gray-color);
 }
 
-.process-item__dots-icon {
+.scripts-list-item__dots-icon {
   width: 12px;
   height: 12px;
   color: var(--light-gray-color);
 }
 
-.process-item__arrow-icon {
+.scripts-list-item__arrow-icon {
   width: 10px;
   height: 10px;
   margin-right: 4px;
@@ -141,21 +143,21 @@ const isOpen = ref(false);
   transition: transform ease-in-out 0.1s;
 }
 
-.process-item__arrow-icon + .process-item__icon {
+.scripts-list-item__arrow-icon + .scripts-list-item__icon {
   color: var(--yellow-accent-color);
 }
 
-.process-item__arrow-icon--open {
+.scripts-list-item__arrow-icon--open {
   transform: rotate(0);
 }
 
-.process-item__main-info {
+.scripts-list-item__main-info {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.process-item__options {
+.scripts-list-item__options {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,30 +171,30 @@ const isOpen = ref(false);
   cursor: pointer;
 }
 
-.process-item__title {
+.scripts-list-item__title {
   font-size: var(--font-size-14);
   line-height: var(--font-size-24);
 }
 
-.process-item__status {
+.scripts-list-item__status {
   font-size: var(--font-size-12);
   line-height: var(--font-size-20);
   color: var(--text-color-gray);
   margin-left: 21px;
 }
 
-.process-item__count {
+.scripts-list-item__count {
   font-size: var(--font-size-12);
   line-height: var(--font-size-20);
   color: var(--text-color-gray);
   margin-left: 35px;
 }
 
-.process-item__status--started {
+.scripts-list-item__status--started {
   color: var(--green-accent-color);
 }
 
-.process-item__children-list {
+.scripts-list-item__children-list {
   display: flex;
   flex-direction: column;
   margin-left: 14px;

@@ -1,20 +1,33 @@
-export const getNestedArray = <T, N>(arr: T[]): N[] => {
-  const ids: Map<string, string> = new Map();
+export const getNestedArray = <
+  T extends { id: string; pid?: string },
+  N extends T & { children: N[] },
+>(
+  arr: T[],
+): N[] => {
+  const ids: Map<string, N> = new Map();
   const result: N[] = [];
 
-  arr.forEach((item) => {
-    ids.set(item.id, { ...item, children: [] });
-  });
+  for (const arrItem of arr) {
+    ids.set(arrItem.id, { ...arrItem, children: [] } as unknown as N);
+  }
 
-  arr.forEach((item) => {
+  for (const item of arr) {
     if (item.pid) {
       const parent = ids.get(item.pid);
-      if (parent) {
-        parent.children.push(ids.get(item.id));
+      const children = ids.get(item.id);
+
+      if (parent && children) {
+        parent.children.push(children);
       }
-    } else {
-      result.push(ids.get(item.id));
+      continue;
     }
-  });
+
+    const itemById = ids.get(item.id);
+
+    if (itemById) {
+      result.push(itemById);
+    }
+  }
+
   return result;
 };

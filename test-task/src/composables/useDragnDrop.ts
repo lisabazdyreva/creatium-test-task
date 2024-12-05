@@ -4,6 +4,8 @@ export function useDragnDrop() {
   const dragId = ref<string | null>(null);
   const dragOverId = ref<string | null>(null);
 
+  const isDataClearable = ref(true);
+
   const handleDragStart = (id: string) => {
     dragId.value = id;
   };
@@ -13,16 +15,21 @@ export function useDragnDrop() {
   };
 
   const _clearIds = () => {
-    dragId.value = null;
-    dragOverId.value = null;
+    if (isDataClearable.value) {
+      dragId.value = null;
+      dragOverId.value = null;
+    }
   };
 
   const handleDrop = (cd: () => void) => {
-    console.log('dropped');
     if (dragId.value !== null && dragId.value !== dragOverId.value) {
       cd();
     }
     _clearIds();
+  };
+
+  const setIsClearable = (value: boolean) => {
+    isDataClearable.value = value;
   };
 
   const handleDragEnd = () => {
@@ -48,5 +55,6 @@ export function useDragnDrop() {
     handleDragOver,
     handleDrop,
     handleDragEnd,
+    setIsClearable,
   };
 }

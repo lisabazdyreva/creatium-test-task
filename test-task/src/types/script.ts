@@ -1,4 +1,5 @@
 import { ActionType } from '@/const/scriptType.ts';
+import { ProcessStatus } from '@/const/process.ts';
 
 export interface IScriptTreeItem {
   id: string;
@@ -13,7 +14,7 @@ export interface IScriptTreeItem {
 }
 
 export interface IScriptTreeItemNested extends IScriptTreeItem {
-  children: Array<IScriptTreeItem>;
+  children: Array<IScriptTreeItemNested>;
 }
 
 export interface IAddScriptItem {
@@ -28,6 +29,6 @@ export interface IAddScriptItem {
 export interface IScriptDirectoryItem {
   id: string;
   title: string;
-  status: string;
+  status: ProcessStatus;
   children?: Array<IScriptDirectoryItem>;
 }

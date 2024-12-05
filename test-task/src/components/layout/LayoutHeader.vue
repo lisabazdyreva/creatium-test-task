@@ -57,6 +57,21 @@ const logicMenu = [
     icon: CalendarIcon,
   },
 ];
+
+const menus = [
+  {
+    title: 'Сайт',
+    list: siteMenu,
+  },
+  {
+    title: 'Данные',
+    list: dataMenu,
+  },
+  {
+    title: 'Логика',
+    list: logicMenu,
+  },
+];
 </script>
 
 <template>
@@ -67,26 +82,16 @@ const logicMenu = [
 
     <nav>
       <ul class="layout-header__nav-list nav-list">
-        <li class="nav-list__item nav-list__item--caption">Сайт</li>
-        <li v-for="item in siteMenu" :key="item.title">
-          <RouterLink class="nav-list__link" :to="item.link">
-            <component :is="item.icon" class="nav-list__icon" />
-          </RouterLink>
-        </li>
-
-        <li class="nav-list__item nav-list__item--caption">Данные</li>
-        <li v-for="item in dataMenu" :key="item.title">
-          <RouterLink class="nav-list__link" :to="item.link">
-            <component :is="item.icon" class="nav-list__icon" />
-          </RouterLink>
-        </li>
-
-        <li class="nav-list__item nav-list__item--caption">Логика</li>
-        <li v-for="item in logicMenu" :key="item.title">
-          <RouterLink class="nav-list__link" :to="item.link">
-            <component :is="item.icon" class="nav-list__icon" />
-          </RouterLink>
-        </li>
+        <template v-for="menu in menus" :key="menu.title">
+          <li class="nav-list__item nav-list__item--caption">
+            {{ menu.title }}
+          </li>
+          <li v-for="item in menu.list" :key="item.title">
+            <RouterLink class="nav-list__link" :to="item.link">
+              <component :is="item.icon" class="nav-list__icon" />
+            </RouterLink>
+          </li>
+        </template>
       </ul>
     </nav>
   </header>
@@ -96,9 +101,8 @@ const logicMenu = [
 .layout-header {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 70px;
+  width: var(--header-width);
   height: 100%;
   padding-top: 23px;
 }
@@ -154,8 +158,8 @@ const logicMenu = [
 }
 
 .nav-list__icon {
+  display: block;
   width: 18px;
   height: 18px;
-  display: block;
 }
 </style>

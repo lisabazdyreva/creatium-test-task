@@ -43,7 +43,7 @@ const marginLeft = computed(() =>
       @dragstart="$emit('handle-dragstart', item.id)"
       @dragenter.prevent="$emit('handle-dragenter', item.id)"
       @dragover.prevent="$emit('handle-dragover', item.id)"
-      @drop="$emit('handle-drop', item.id)"
+      @drop="$emit('handle-drop')"
     >
       <ShowDirectoryButton
         v-if="item?.children?.length && item.pid"
@@ -92,8 +92,6 @@ const marginLeft = computed(() =>
       :children-length="item.children?.length"
       :is-root="!item.pid"
       :pid="item?.pid"
-      :size="45"
-      :gap="20"
       :nested-level="nestedLevel"
     />
   </li>
@@ -109,14 +107,32 @@ const marginLeft = computed(() =>
   gap: 15px;
   align-items: center;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.script-tree-item__wrapper:hover {
+  background-color: var(--bg-white-hover);
 }
 
 .script-tree-item__wrapper--root {
+  cursor: default;
   margin-bottom: 26px;
 }
-
-.script-tree-item__wrapper--drag-over {
-  margin-bottom: 26px;
+/*todo lisa посмотреть еще */
+.script-tree-item__wrapper--drag-over::before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    #ffffffaa,
+    #e8e0fcaa 40%,
+    #8b63efaa 100%
+  );
+  width: 100%;
+  height: 10px;
+  top: 45px;
+  border-radius: 0 0 1px 1px;
+  box-shadow: 1px 2px 2px #8b63ef22;
 }
 
 .script-tree-item__icon-wrapper {

@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "Telegram-бот",
-    "status": "ProcessStatus.Started"
+    "status": "started"
   },
   {
     "id": "2",
@@ -11,22 +11,22 @@
       {
         "id": "2a",
         "title": "1 сценарий",
-        "status": "ProcessStatus.Started"
+        "status": "started"
       },
       {
         "id": "2b",
         "title": "2 сценарий",
-        "status": "ProcessStatus.Started"
+        "status": "started"
       },
       {
         "id": "2c",
         "title": "3 сценарий",
-        "status": "ProcessStatus.Paused"
+        "status": "started"
       },
       {
         "id": "2d",
         "title": "4 сценарий",
-        "status": "ProcessStatus.Paused"
+        "status": "paused"
       }
     ]
   },
@@ -37,33 +37,33 @@
       {
         "id": "3a",
         "title": "1 сценарий",
-        "status": "ProcessStatus.Started"
+        "status": "started"
       },
       {
         "id": "3b",
         "title": "2 сценарий",
-        "status": "ProcessStatus.Started"
+        "status": "started"
       },
       {
         "id": "3c",
         "title": "3 сценарий",
-        "status": "ProcessStatus.Paused"
+        "status": "paused"
       },
       {
         "id": "3d",
         "title": "4 сценарий",
-        "status": "ProcessStatus.Paused"
+        "status": "paused"
       }
     ]
   },
   {
     "id": "4",
     "title": "Регистрация",
-    "status": "ProcessStatus.Paused"
+    "status": "paused"
   },
   {
     "id": "5",
     "title": "API: Список объявлений",
-    "status": "ProcessStatus.Started"
+    "status": "started"
   }
 ]

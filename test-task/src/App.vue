@@ -5,7 +5,7 @@ import LayoutHeader from '@/components/layout/LayoutHeader.vue';
 
 <template>
   <div class="app">
-    <LayoutHeader />
+    <LayoutHeader class="app__header" />
     <RouterView />
   </div>
 </template>
@@ -13,5 +13,9 @@ import LayoutHeader from '@/components/layout/LayoutHeader.vue';
 <style scoped>
 .app {
   display: flex;
+}
+.app__header {
+  position: fixed;
+  top: 0;
 }
 </style>

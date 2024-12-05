@@ -5,10 +5,10 @@
 
 :root {
   --header-width: 70px;
-  --layout-sidebar-width: 320px;
+  --left-sidebar-width: 320px;
 
   --content-header-height: 78px;
-  --content-aside-width: 320px;
+  --right-sidebar-width: 320px;
 
   --sec-accent-color: #8b63ef;
 

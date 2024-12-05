@@ -27,7 +27,7 @@ const isScriptRunning = ref(true);
         class="actions__button actions__button--history"
         plain
         style="
-          --el-button-bп-color: #ffffff;
+          --el-button-bg-color: #ffffff;
           --el-button-border-color: #dcdfe6;
           --el-button-text-color: #606266;
 
@@ -40,6 +40,7 @@ const isScriptRunning = ref(true);
 
       <el-button
         class="actions__button actions__button--save"
+        disabled
         style="
           --el-button-border-color: #8b63ef;
           --el-button-bg-color: #8b63ef;
@@ -48,6 +49,11 @@ const isScriptRunning = ref(true);
           --el-button-hover-border-color: #6545b2;
           --el-button-hover-bg-color: #6545b2;
           --el-button-hover-text-color: #ffffff;
+
+          --el-button-disabled-bg-color: #c1a5f3;
+          --el-button-disabled-border-color: #c1a5f3;
+          --el-button-disabled-text-color: #ffffff;
+          margin-left: 0;
         "
       >
         Сохранить
@@ -62,9 +68,15 @@ const isScriptRunning = ref(true);
   display: flex;
   align-items: center;
   background-color: var(--bg-white);
-  height: 78px;
+  height: var(--content-header-height);
+  position: fixed;
+  top: 0;
+  left: calc(var(--header-width) + var(--left-sidebar-width));
+  right: 0;
   padding: 20px 30px;
   border-bottom: 1px solid var(--border-color);
+
+  z-index: 1;
 
   font-family: 'PingFang', Arial, sans-serif;
 }
@@ -73,6 +85,11 @@ const isScriptRunning = ref(true);
   display: flex;
   margin-left: auto;
   gap: 12px;
+}
+
+.script {
+  display: flex;
+  align-items: center;
 }
 
 .script__status {
@@ -86,7 +103,8 @@ const isScriptRunning = ref(true);
   font-size: var(--font-size-14);
   line-height: var(--font-size-22);
   padding: 9px 20px;
-  font-weight: 500;
+  font-weight: 600;
+  height: 40px;
 }
 
 .button__icon {

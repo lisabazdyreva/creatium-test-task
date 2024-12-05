@@ -7,18 +7,22 @@ defineProps<{
 </script>
 
 <template>
-  <div class="script-aside-item">
-    <div class="script-aside-item__icon-wrapper">
-      <img class="script-aside-item__icon" :src="item.icon.src" />
+  <li class="add-script-item">
+    <div class="add-script-item__icon-wrapper">
+      <img
+        class="add-script-item__icon"
+        :src="item.icon.src"
+        :alt="item.title"
+      />
     </div>
-    <div class="script-aside-item__title">
+    <div class="add-script-item__title">
       {{ item.title }}
     </div>
-  </div>
+  </li>
 </template>
 
 <style scoped>
-.script-aside-item {
+.add-script-item {
   display: flex;
   align-items: center;
   padding: 8px;
@@ -27,7 +31,7 @@ defineProps<{
   margin-bottom: 8px;
 }
 
-.script-aside-item__icon-wrapper {
+.add-script-item__icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,14 +39,14 @@ defineProps<{
   height: 32px;
 }
 
-.script-aside-item__icon {
+.add-script-item__icon {
   display: block;
   width: 20px;
   height: 20px;
   color: var(--sec-accent-color);
 }
 
-.script-aside-item__title {
+.add-script-item__title {
   font-size: var(--font-size-14);
   line-height: var(--font-size-24);
   color: var(--text-color-primary);

@@ -1,14 +1,20 @@
 <script setup lang="ts">
-defineProps<{
-  size: 45;
-  nestedLevel: number;
+withDefaults(
+  defineProps<{
+    nestedLevel: number;
 
-  isLast?: boolean;
-  isRoot?: boolean;
-  childrenLength?: number;
-  pid?: string;
-  gap?: number;
-}>();
+    isLast?: boolean;
+    isRoot?: boolean;
+    childrenLength?: number;
+    pid?: string;
+    gap?: number;
+    size?: number;
+  }>(),
+  {
+    gap: 20,
+    size: 45,
+  },
+);
 </script>
 
 <template>

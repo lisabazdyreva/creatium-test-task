@@ -11,13 +11,7 @@ import scriptsListMocks from '@/mocks/scriptsDataList.json';
 import type { IScriptDirectoryItem } from '@/types/script.ts';
 
 const processList = scriptsListMocks as Array<IScriptDirectoryItem>;
-
 const searchValue = ref('');
-const activeItemId = ref<string>();
-
-const setActiveItemId = (id: string) => {
-  activeItemId.value = id;
-};
 </script>
 
 <template>
@@ -42,8 +36,6 @@ const setActiveItemId = (id: string) => {
             v-for="item in processList"
             :key="item.id"
             :item="item"
-            :active-id="activeItemId"
-            @set-active-item="setActiveItemId"
           />
         </ul>
       </div>

@@ -1,6 +1,7 @@
 [
   {
     "id": "1",
+    "type": "bot",
     "title": "Telegram-бот",
     "status": "started"
   },
@@ -10,21 +11,25 @@
     "children": [
       {
         "id": "2a",
+        "type": "script",
         "title": "1 сценарий",
         "status": "started"
       },
       {
         "id": "2b",
+        "type": "script",
         "title": "2 сценарий",
         "status": "started"
       },
       {
         "id": "2c",
+        "type": "script",
         "title": "3 сценарий",
         "status": "started"
       },
       {
         "id": "2d",
+        "type": "script",
         "title": "4 сценарий",
         "status": "paused"
       }
@@ -36,21 +41,25 @@
     "children": [
       {
         "id": "3a",
+        "type": "script",
         "title": "1 сценарий",
         "status": "started"
       },
       {
         "id": "3b",
+        "type": "script",
         "title": "2 сценарий",
         "status": "started"
       },
       {
         "id": "3c",
+        "type": "script",
         "title": "3 сценарий",
         "status": "paused"
       },
       {
         "id": "3d",
+        "type": "script",
         "title": "4 сценарий",
         "status": "paused"
       }
@@ -63,6 +72,7 @@
   },
   {
     "id": "5",
+    "type": "api",
     "title": "API: Список объявлений",
     "status": "started"
   }

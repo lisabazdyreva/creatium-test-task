@@ -1,6 +1,11 @@
 import { ActionType } from '@/const/scriptType.ts';
 import { ProcessStatus } from '@/const/process.ts';
 
+export interface IScriptData {
+  id: string;
+  scriptsData: IScriptTreeItem[];
+}
+
 export interface IScriptTreeItem {
   id: string;
   pid?: string;
@@ -29,6 +34,7 @@ export interface IAddScriptItem {
 export interface IScriptDirectoryItem {
   id: string;
   title: string;
+  type: 'script' | 'bot' | 'api'; //todo lisa add const
   status: ProcessStatus;
   children?: Array<IScriptDirectoryItem>;
 }

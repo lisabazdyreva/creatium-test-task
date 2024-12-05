@@ -6,28 +6,58 @@ import StructureLines from '@/components/common/StructureLines.vue';
 import ShowDirectoryButton from '@/components/common/ShowDirectoryButton.vue';
 
 import type { IScriptTreeItemNested } from '@/types/script.ts';
+import { ItemPlace } from '@/const';
 
 const props = defineProps<{
   item: IScriptTreeItemNested;
   nestedLevel: number;
   isLast: boolean;
   dragOverId: string | null;
+  dragId: string | null;
 }>();
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'handle-dragstart', id: string): void;
   (e: 'handle-dragover', id: string): void;
   (e: 'handle-dragenter', id: string): void;
-  (e: 'handle-drop'): void;
+  (e: 'handle-drop', place: ItemPlace): void;
 }>();
 
 const isShow = ref(true);
+const isInsidePaste = ref(false);
+const isBottomPaste = ref(false);
 
 const marginLeft = computed(() =>
   props.item.pid && props.item?.children?.length
     ? `${props.nestedLevel * 45 - (17 + 14)}px`
     : `${props.nestedLevel * 45}px`,
 );
+
+const handleDragOver = (id: string, evt: DragEvent) => {
+  const target = evt.target as HTMLElement;
+  const rect = target.getBoundingClientRect();
+
+  const isInsideCurrent =
+    evt.clientY <= rect.top + Math.round(rect.height / 2) + 10;
+  const isBottomCurrent =
+    evt.clientY > rect.top + Math.round(rect.height / 2) + 10;
+
+  if (isInsideCurrent !== isInsidePaste.value) {
+    isInsidePaste.value = isInsideCurrent;
+  }
+
+  if (isBottomCurrent !== isBottomPaste.value) {
+    isBottomPaste.value = isBottomCurrent;
+  }
+
+  emit('handle-dragover', id);
+};
+const handleDrop = () => {
+  const place = isInsidePaste.value ? ItemPlace.Inside : ItemPlace.Bottom;
+  emit('handle-drop', place);
+  isInsidePaste.value = false;
+  isBottomPaste.value = false;
+};
 </script>
 
 <template>
@@ -35,15 +65,18 @@ const marginLeft = computed(() =>
     <div
       class="script-tree-item__wrapper"
       :class="{
-        'script-tree-item__wrapper--drag-over': dragOverId === item.id,
+        'script-tree-item__wrapper--drag-over':
+          dragOverId === item.id && item.pid !== dragId,
         'script-tree-item__wrapper--root': !item?.pid,
+        'script-tree-item__wrapper--inside': isInsidePaste,
+        'script-tree-item__wrapper--bottom': isBottomPaste,
       }"
       :style="{ marginLeft }"
       :draggable="Boolean(item.pid)"
       @dragstart="$emit('handle-dragstart', item.id)"
       @dragenter.prevent="$emit('handle-dragenter', item.id)"
-      @dragover.prevent="$emit('handle-dragover', item.id)"
-      @drop="$emit('handle-drop')"
+      @dragover.prevent="(evt) => handleDragOver(item.id, evt)"
+      @drop="() => handleDrop()"
     >
       <ShowDirectoryButton
         v-if="item?.children?.length && item.pid"
@@ -78,8 +111,9 @@ const marginLeft = computed(() =>
           :is-last="i === item.children.length - 1"
           :item="childItem"
           :dragOverId="dragOverId"
+          :drag-id="dragId"
           :nested-level="nestedLevel + 1"
-          @handle-drop="$emit('handle-drop')"
+          @handle-drop="(place: ItemPlace) => $emit('handle-drop', place)"
           @handle-dragenter="(id: string) => $emit('handle-dragenter', id)"
           @handle-dragstart="(id: string) => $emit('handle-dragstart', id)"
           @handle-dragover="(id: string) => $emit('handle-dragover', id)"
@@ -108,35 +142,37 @@ const marginLeft = computed(() =>
   align-items: center;
   margin-bottom: 20px;
   cursor: pointer;
+  overflow: hidden;
 }
 
-.script-tree-item__wrapper:hover {
-  background-color: var(--bg-white-hover);
+.script-tree-item__wrapper--drag-over::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  height: 58px;
+  left: calc(v-bind(nestedLevel) * 45px - 22px);
+  right: 0;
+  cursor: pointer;
+}
+.script-tree-item__wrapper--drag-over.script-tree-item__wrapper--inside {
+  border-radius: 4px;
+  box-shadow: 1px 2px 2px #8b63ef22;
+  background: linear-gradient(to bottom, #ffffffaa, #8b63ef55 100%);
+}
+
+.script-tree-item__wrapper--drag-over.script-tree-item__wrapper--bottom::after {
+  box-shadow: -1px 3px 2px #8b63efaa;
 }
 
 .script-tree-item__wrapper--root {
   cursor: default;
   margin-bottom: 26px;
 }
-/*todo lisa посмотреть еще */
-.script-tree-item__wrapper--drag-over::before {
-  content: '';
-  position: absolute;
-  background: linear-gradient(
-    to bottom,
-    #ffffffaa,
-    #e8e0fcaa 40%,
-    #8b63efaa 100%
-  );
-  width: 100%;
-  height: 10px;
-  top: 45px;
-  border-radius: 0 0 1px 1px;
-  box-shadow: 1px 2px 2px #8b63ef22;
-}
 
 .script-tree-item__icon-wrapper {
   display: flex;
+  flex-shrink: 0;
   width: 45px;
   height: 45px;
   justify-content: center;
@@ -152,6 +188,8 @@ const marginLeft = computed(() =>
 .script-tree-item__info {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 }
 
 .info__main-info {
@@ -171,6 +209,12 @@ const marginLeft = computed(() =>
   line-height: var(--font-size-16);
   color: var(--text-color-gray);
   height: 16px;
-  /* todo lisa add truncate */
+}
+
+.info__caption > span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

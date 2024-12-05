@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 import { ProcessStatusLabel } from '@/const/process.ts';
 
@@ -9,16 +9,20 @@ import FullFolderIcon from '@/components/icons/scripts/FullFolderIcon.vue';
 import ArrowIcon from '@/components/icons/common/ArrowIcon.vue';
 
 import type { IScriptDirectoryItem } from '@/types/script.ts';
+import { useScriptsStore } from '@/stores/scripts.ts';
 
 defineProps<{
   item: IScriptDirectoryItem;
-  activeId?: string;
 }>();
 
-defineEmits<{
-  (e: 'set-active-item', id: string): void;
-}>();
-const isOpen = ref(false);
+const store = useScriptsStore();
+const activeId = computed(() => store.editScript?.id);
+
+const isOpen = ref(Boolean(activeId));
+
+const setActiveItemId = (id: string) => {
+  store.setEditScript(id);
+};
 </script>
 
 <template>
@@ -27,7 +31,7 @@ const isOpen = ref(false);
       v-if="!item?.children"
       class="scripts-list-item__last-child"
       :class="{ 'scripts-list-item__active': activeId === item.id }"
-      @click="$emit('set-active-item', item.id)"
+      @click="() => setActiveItemId(item.id)"
     >
       <div class="scripts-list-item__main-info">
         <div class="scripts-list-item__icon-wrapper">
@@ -76,7 +80,7 @@ const isOpen = ref(false);
           class="scripts-list-item"
           :item="childItem"
           :active-id="activeId"
-          @click="$emit('set-active-item', childItem.id)"
+          @click="() => setActiveItemId(childItem.id)"
         />
       </ul>
     </template>

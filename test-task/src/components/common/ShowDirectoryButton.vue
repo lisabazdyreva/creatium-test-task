@@ -11,6 +11,7 @@ defineProps<{
 <style scoped>
 .show-button {
   display: flex;
+  flex-shrink: 0;
   padding: 0;
   width: 14px;
   height: 14px;

@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import ScriptTreeItem from '@/components/logic/ScriptTreeItem.vue';
 import type { IScriptTreeItemNested } from '@/types/script.ts';
+import { ItemPlace } from '@/const';
 
 defineProps<{
-  data: Array<IScriptTreeItemNested>;
+  data: Array<IScriptTreeItemNested> | null;
   dragOverId: string | null;
+  dragId: string | null;
 }>();
 
 defineEmits<{
   (e: 'drag-start', id: string): void;
   (e: 'drag-over', id: string): void;
-  (e: 'drag-drop'): void;
+  (e: 'drag-drop', value: ItemPlace): void;
   (e: 'drag-end'): void;
 }>();
 </script>
@@ -28,10 +30,11 @@ defineEmits<{
           :item="item"
           :is-last="i === item.children.length - 1"
           :drag-over-id="dragOverId"
+          :drag-id="dragId"
           :nested-level="0"
           @handle-dragstart="(value: string) => $emit('drag-start', value)"
           @handle-dragover="(value: string) => $emit('drag-over', value)"
-          @handle-drop="$emit('drag-drop')"
+          @handle-drop="(value: ItemPlace) => $emit('drag-drop', value)"
           @handle-dragend="$emit('drag-end')"
         />
       </ul>

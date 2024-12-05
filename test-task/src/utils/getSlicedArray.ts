@@ -1,17 +1,19 @@
+import { DataMethod } from '@/const';
+
 export const getSlicedArray = <T>(
   arr: T[],
-  method: 'add' | 'remove',
+  method: DataMethod,
   index: number,
   item?: T,
 ): T[] => {
   switch (method) {
-    case 'add': {
+    case DataMethod.Add: {
       if (item) {
         return [...arr.slice(0, index), item, ...arr.slice(index)];
       }
       return arr.slice();
     }
-    case 'remove': {
+    case DataMethod.Remove: {
       return [...arr.slice(0, index), ...arr.slice(index + 1)];
     }
   }

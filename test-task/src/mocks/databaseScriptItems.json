@@ -4,7 +4,7 @@
     "title": "Создать запись",
     "action": "newRecord",
     "icon": {
-      "src": "/public/icons/newRecordIcon.svg"
+      "src": "/icons/newRecordIcon.svg"
     }
   },
   {
@@ -12,7 +12,7 @@
     "title": "Обновить запись",
     "action": "updateRecord",
     "icon": {
-      "src": "/public/icons/updateRecordIcon.svg"
+      "src": "/icons/updateRecordIcon.svg"
     }
   },
   {
@@ -20,7 +20,7 @@
     "title": "Найти записи",
     "action": "searchRecords",
     "icon": {
-      "src": "/public/icons/searchRecordIcon.svg"
+      "src": "/icons/searchRecordIcon.svg"
     }
   },
   {
@@ -28,7 +28,7 @@
     "title": "Удалить запись",
     "action": "deleteRecord",
     "icon": {
-      "src": "/public/icons/deleteRecordIcon.svg"
+      "src": "/icons/deleteRecordIcon.svg"
     }
   }
 ]

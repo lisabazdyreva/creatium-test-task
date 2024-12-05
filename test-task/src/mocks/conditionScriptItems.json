@@ -4,7 +4,7 @@
     "title": "Если",
     "action": "ifCondition",
     "icon": {
-      "src": "/public/icons/conditionIcon.svg"
+      "src": "/icons/conditionIcon.svg"
     }
   },
   {
@@ -12,7 +12,7 @@
     "title": "Иначе",
     "action": "elseCondition",
     "icon": {
-      "src": "/public/icons/conditionIcon.svg"
+      "src": "/icons/conditionIcon.svg"
     }
   },
   {
@@ -20,7 +20,7 @@
     "title": "Таймер",
     "action": "timer",
     "icon": {
-      "src": "/public/icons/timerIcon.svg"
+      "src": "/icons/timerIcon.svg"
     }
   },
   {
@@ -28,7 +28,7 @@
     "title": "Выполнить код",
     "action": "runCode",
     "icon": {
-      "src": "/public/icons/codeIcon.svg"
+      "src": "/icons/codeIcon.svg"
     }
   }
 ]

@@ -4,7 +4,7 @@
     "title": "Создать пользователя",
     "action": "newUser",
     "icon": {
-      "src": "/public/icons/createUserIcon.svg"
+      "src": "/icons/createUserIcon.svg"
     }
   },
   {
@@ -12,7 +12,7 @@
     "title": "Изменить почту",
     "action": "updateUserMail",
     "icon": {
-      "src": "/public/icons/updateUserEmailIcon.svg"
+      "src": "/icons/updateUserEmailIcon.svg"
     }
   },
   {
@@ -20,7 +20,7 @@
     "title": "Восстановить пароль",
     "action": "restoreUserPassword",
     "icon": {
-      "src": "/public/icons/restoreUserPasswordIcon.svg"
+      "src": "/icons/restoreUserPasswordIcon.svg"
     }
   }
 ]

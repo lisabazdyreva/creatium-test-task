@@ -8,7 +8,7 @@
         "action": "input",
         "showAction": true,
         "icon": {
-          "src": "/public/icons/sharpPlayIcon.svg"
+          "src": "/icons/sharpPlayIcon.svg"
         }
       },
       {
@@ -19,7 +19,7 @@
         "showAction": true,
         "value": "https://hook.creatium.io/25gsf1ph594rnktv2cdtxum5ucjpav5f",
         "icon": {
-          "src": "/public/icons/responseIcon.svg"
+          "src": "/icons/responseIcon.svg"
         }
       },
       {
@@ -30,7 +30,7 @@
         "showAction": true,
         "value": "5 секунд",
         "icon": {
-          "src": "/public/icons/timerIcon.svg"
+          "src": "/icons/timerIcon.svg"
         }
       },
       {
@@ -41,7 +41,7 @@
         "showAction": false,
         "value": "{{form.field_by_'id' = “Регистрация”}}",
         "icon": {
-          "src": "/public/icons/conditionIcon.svg"
+          "src": "/icons/conditionIcon.svg"
         }
       },
       {
@@ -52,7 +52,7 @@
         "showAction": true,
         "value": "В таблице Объявления",
         "icon": {
-          "src": "/public/icons/searchRecordIcon.svg"
+          "src": "/icons/searchRecordIcon.svg"
         }
       },
       {
@@ -63,7 +63,7 @@
         "showAction": true,
         "value": "В таблице Пользователи",
         "icon": {
-          "src": "/public/icons/createUserIcon.svg"
+          "src": "/icons/createUserIcon.svg"
         }
       },
       {
@@ -74,7 +74,7 @@
         "showAction": false,
         "value": "{{form.field_by_'id' = “Новый администратор”}}",
         "icon": {
-          "src": "/public/icons/conditionIcon.svg"
+          "src": "/icons/conditionIcon.svg"
         }
       },
       {
@@ -85,7 +85,7 @@
         "showAction": true,
         "value": "В таблице Администраторы",
         "icon": {
-          "src": "/public/icons/searchRecordIcon.svg"
+          "src": "/icons/searchRecordIcon.svg"
         }
       },
       {
@@ -96,7 +96,7 @@
         "showAction": true,
         "value": "В таблице Администраторы",
         "icon": {
-          "src": "/public/icons/newRecordIcon.svg"
+          "src": "/icons/newRecordIcon.svg"
         }
       },
       {
@@ -107,7 +107,7 @@
         "showAction": true,
         "value": "{{'id' = “Добавление статуса”}}",
         "icon": {
-          "src": "/public/icons/bugIcon.svg"
+          "src": "/icons/bugIcon.svg"
         }
       },
       {
@@ -118,7 +118,7 @@
         "showAction": true,
         "value": "В таблице Статусы",
         "icon": {
-          "src": "/public/icons/searchRecordIcon.svg"
+          "src": "/icons/searchRecordIcon.svg"
         }
       },
       {
@@ -129,7 +129,7 @@
         "showAction": true,
         "value": "В таблице Статусы",
         "icon": {
-          "src": "/public/icons/newRecordIcon.svg"
+          "src": "/icons/newRecordIcon.svg"
         }
       },
       {
@@ -140,7 +140,7 @@
         "showAction": true,
         "value": "В таблице Статусы",
         "icon": {
-          "src": "/public/icons/newRecordIcon.svg"
+          "src": "/icons/newRecordIcon.svg"
         }
       },
       {
@@ -150,7 +150,7 @@
         "action": "error",
         "showAction": true,
         "icon": {
-          "src": "/public/icons/bugIcon.svg"
+          "src": "/icons/bugIcon.svg"
         }
       },
       {
@@ -161,7 +161,7 @@
         "showAction": true,
         "value": "В таблице Статусы",
         "icon": {
-          "src": "/public/icons/searchRecordIcon.svg"
+          "src": "/icons/searchRecordIcon.svg"
         }
       },
       {
@@ -172,7 +172,7 @@
         "showAction": true,
         "value": "В таблице Статусы",
         "icon": {
-          "src": "/public/icons/searchRecordIcon.svg"
+          "src": "/icons/searchRecordIcon.svg"
         }
       }
     ]
@@ -186,7 +186,7 @@
         "action": "input",
         "showAction": true,
         "icon": {
-          "src": "/public/icons/sharpPlayIcon.svg"
+          "src": "/icons/sharpPlayIcon.svg"
         }
       },
       {
@@ -197,7 +197,7 @@
         "showAction": true,
         "value": "https://hook.creatium.io/25gsf1ph594rnktv2cdtxum5ucjpav5f",
         "icon": {
-          "src": "/public/icons/responseIcon.svg"
+          "src": "/icons/responseIcon.svg"
         }
       }
     ]

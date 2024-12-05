@@ -45,23 +45,23 @@ export const ActionTypeTitle = {
 
 // todo можно будет убрать, если иконки с сервера будут прилетать
 export const ActionTypeIcon = {
-  [ActionType.Input]: '/public/icons/sharpPlayIcon.svg',
+  [ActionType.Input]: '/icons/sharpPlayIcon.svg',
 
-  [ActionType.NewRecords]: '/public/icons/newRecordIcon.svg',
-  [ActionType.SearchRecords]: '/public/icons/searchRecordIcon.svg',
-  [ActionType.UpdateRecord]: '/public/icons/updateRecordIcon.svg',
-  [ActionType.DeleteRecord]: '/public/icons/deleteRecordIcon.svg',
+  [ActionType.NewRecords]: '/icons/newRecordIcon.svg',
+  [ActionType.SearchRecords]: '/icons/searchRecordIcon.svg',
+  [ActionType.UpdateRecord]: '/icons/updateRecordIcon.svg',
+  [ActionType.DeleteRecord]: '/icons/deleteRecordIcon.svg',
 
-  [ActionType.If]: '/public/icons/conditionIcon.svg',
-  [ActionType.Else]: '/public/icons/conditionIcon.svg',
-  [ActionType.Timer]: '/public/icons/timerIcon.svg',
-  [ActionType.RunCode]: '/public/icons/codeIcon.svg',
+  [ActionType.If]: '/icons/conditionIcon.svg',
+  [ActionType.Else]: '/icons/conditionIcon.svg',
+  [ActionType.Timer]: '/icons/timerIcon.svg',
+  [ActionType.RunCode]: '/icons/codeIcon.svg',
 
-  [ActionType.NewUser]: '/public/icons/createUserIcon.svg',
-  [ActionType.UpdateUserMail]: '/public/icons/updateUserEmailIcon.svg',
-  [ActionType.RestoreUserPassword]: '/public/icons/restoreUserPasswordIcon.svg',
+  [ActionType.NewUser]: '/icons/createUserIcon.svg',
+  [ActionType.UpdateUserMail]: '/icons/updateUserEmailIcon.svg',
+  [ActionType.RestoreUserPassword]: '/icons/restoreUserPasswordIcon.svg',
 
-  [ActionType.Response]: '/public/icons/responseIcon.svg',
-  [ActionType.Try]: '/public/icons/bugIcon.svg',
-  [ActionType.Error]: '/public/icons/bugIcon.svg',
+  [ActionType.Response]: '/icons/responseIcon.svg',
+  [ActionType.Try]: '/icons/bugIcon.svg',
+  [ActionType.Error]: '/icons/bugIcon.svg',
 } as const;

@@ -18,6 +18,7 @@ import { getNewAction } from '@/utils/getNewAction.ts';
 import { ActionType } from '@/const/scriptType.ts';
 import { ItemPlace } from '@/const';
 import { useScriptsStore } from '@/stores/scripts.ts';
+import { getActionTitle } from '@/utils/getActionTitle.ts';
 
 const store = useScriptsStore();
 
@@ -233,9 +234,12 @@ const handleNewActionDragStart = (id: string, type: ActionType) => {
 };
 
 const handleAddActionFormSubmit = (value: string) => {
+  if (!newActionItem.value) {
+    return;
+  }
   newActionItem.value = {
     ...newActionItem.value,
-    value: value,
+    value: getActionTitle(newActionItem.value.action, value),
   } as IScriptTreeItem;
 
   updateActions(newActionItem.value);

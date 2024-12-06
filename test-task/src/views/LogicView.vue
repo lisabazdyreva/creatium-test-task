@@ -19,6 +19,7 @@ import { ActionType } from '@/const/scriptType.ts';
 import { ItemPlace } from '@/const';
 import { useScriptsStore } from '@/stores/scripts.ts';
 import { getActionTitle } from '@/utils/getActionTitle.ts';
+import { getDescendants } from '@/utils/getDescendants.ts';
 
 const store = useScriptsStore();
 
@@ -45,6 +46,17 @@ const {
   handleDragEnd,
   setIsClearable,
 } = useDragnDrop();
+
+const excludedChildrenIds = computed(() => {
+  if (!dragId.value || !store.editScript) {
+    return [];
+  }
+
+  return getDescendants<IScriptTreeItem>(
+    store.editScript.scriptsData,
+    dragId.value,
+  );
+});
 
 const getAddIndex = (place: ItemPlace | null, prevIndex: number) => {
   if (!place || !store.editScript?.scriptsData?.length) {
@@ -79,30 +91,17 @@ const getPid = (item: IScriptTreeItem, place: ItemPlace | null) => {
   }
 };
 
-const getDescendants = (
-  items: IScriptTreeItem[],
-  parentId: string,
-): string[] => {
-  const descendants = [];
-  for (const item of items) {
-    if (item.pid === parentId) {
-      descendants.push(item.id, ...getDescendants(items, item.id));
-    }
-  }
-  return descendants;
-};
-
 const checkIsTryingParentPasteInChild = (
   draggedItem: IScriptTreeItem,
   dragOverItem: IScriptTreeItem,
-  data: IScriptTreeItem[],
 ) => {
   if (draggedItem.id === dragOverItem.pid) {
     return true;
   }
 
-  const descendants = getDescendants(data, draggedItem.id);
-  return !descendants.length ? false : descendants.includes(dragOverItem.id);
+  return !excludedChildrenIds.value.length
+    ? false
+    : excludedChildrenIds.value.includes(dragOverItem.id);
 };
 
 const updateActions = (item?: IScriptTreeItem) => {
@@ -147,7 +146,6 @@ const updateActions = (item?: IScriptTreeItem) => {
   const isTryingPasteInChild = checkIsTryingParentPasteInChild(
     data.item,
     insertData.item,
-    store.editScript.scriptsData,
   );
 
   if (isTryingPasteInChild) {
@@ -214,6 +212,7 @@ const handleActionDrop = (place: ItemPlace) => {
   if (!store.editScript) {
     return;
   }
+
   const isAddNewAction = checkIsAddNewAction(
     store.editScript?.scriptsData,
     dragId.value,
@@ -230,6 +229,10 @@ const handleActionDrop = (place: ItemPlace) => {
 
 const handleNewActionDragStart = (id: string, type: ActionType) => {
   newActionItem.value = getNewAction(type);
+  handleDragStart(id);
+};
+
+const handleDragActionStart = (id: string) => {
   handleDragStart(id);
 };
 
@@ -262,7 +265,8 @@ onMounted(() => {
           :data="scriptDataNested"
           :drag-over-id="dragOverId"
           :drag-id="dragId"
-          @drag-start="handleDragStart"
+          :excluded-children-ids="excludedChildrenIds"
+          @drag-start="handleDragActionStart"
           @drag-over="handleDragOver"
           @drag-drop="handleActionDrop"
           @drag-end="handleDragEnd"

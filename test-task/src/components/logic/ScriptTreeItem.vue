@@ -14,6 +14,7 @@ const props = defineProps<{
   isLast: boolean;
   dragOverId: string | null;
   dragId: string | null;
+  excludedChildrenIds: string[];
 }>();
 
 const emit = defineEmits<{
@@ -66,7 +67,7 @@ const handleDrop = () => {
       class="script-tree-item__wrapper"
       :class="{
         'script-tree-item__wrapper--drag-over':
-          dragOverId === item.id && item.pid !== dragId,
+          dragOverId === item.id && !excludedChildrenIds.includes(item.id),
         'script-tree-item__wrapper--root': !item?.pid,
         'script-tree-item__wrapper--inside': isInsidePaste,
         'script-tree-item__wrapper--bottom': isBottomPaste,
@@ -112,6 +113,7 @@ const handleDrop = () => {
           :item="childItem"
           :dragOverId="dragOverId"
           :drag-id="dragId"
+          :excluded-children-ids="excludedChildrenIds"
           :nested-level="nestedLevel + 1"
           @handle-drop="(place: ItemPlace) => $emit('handle-drop', place)"
           @handle-dragenter="(id: string) => $emit('handle-dragenter', id)"

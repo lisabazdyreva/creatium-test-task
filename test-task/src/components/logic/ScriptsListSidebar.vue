@@ -71,11 +71,13 @@ const searchValue = ref('');
     display: flex;
     flex-direction: column;
     overflow: auto;
+    scrollbar-width: thin;
   }
 
   .scripts-list-sidebar__search-wrapper {
     position: sticky;
     top: 0;
+    z-index: 1;
     display: flex;
     background-color: var(--bg-white);
   }

@@ -67,7 +67,9 @@ const handleDrop = () => {
       class="script-tree-item__wrapper"
       :class="{
         'script-tree-item__wrapper--drag-over':
-          dragOverId === item.id && !excludedChildrenIds.includes(item.id) && dragId !== item.id,
+          dragOverId === item.id &&
+          !excludedChildrenIds.includes(item.id) &&
+          dragId !== item.id,
         'script-tree-item__wrapper--root': !item?.pid,
         'script-tree-item__wrapper--inside': isInsidePaste,
         'script-tree-item__wrapper--bottom': isBottomPaste,

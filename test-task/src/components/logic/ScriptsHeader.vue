@@ -76,7 +76,7 @@ const isScriptRunning = ref(true);
   padding: 20px 30px;
   border-bottom: 1px solid var(--border-color);
 
-  z-index: 1;
+  z-index: 2;
 
   font-family: 'PingFang', Arial, sans-serif;
 }

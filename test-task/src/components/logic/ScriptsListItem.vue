@@ -93,6 +93,7 @@ const setActiveItemId = (id: string) => {
   flex-direction: column;
   width: 100%;
   padding: 4px 10px 4px 18px;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--bg-white-hover);
@@ -192,6 +193,7 @@ const setActiveItemId = (id: string) => {
   line-height: var(--font-size-20);
   color: var(--text-color-gray);
   margin-left: 35px;
+  text-align: start;
 }
 
 .scripts-list-item__status--started {

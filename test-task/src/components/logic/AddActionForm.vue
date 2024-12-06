@@ -10,6 +10,7 @@ import {
 } from 'element-plus';
 import { computed, ref } from 'vue';
 import { ActionType } from '@/const/scriptType.ts';
+import { databaseOptions } from '@/const';
 
 const props = defineProps<{
   type: ActionType | null;
@@ -27,22 +28,7 @@ enum FormType {
   RunCode = 'runcode',
 }
 
-const options = [
-  {
-    value: 'admins',
-    label: 'Администраторы',
-  },
-  {
-    value: 'users',
-    label: 'Пользователи',
-  },
-  {
-    value: 'statuses',
-    label: 'Статусы',
-  },
-];
-
-const tableValue = ref(options[0].value);
+const tableValue = ref(databaseOptions[0].value);
 const timerValue = ref<number>(1);
 const conditionValue = ref<string>('');
 const codeValue = ref<string>('');
@@ -83,12 +69,10 @@ const handleFormSubmit = () => {
     case ActionType.NewUser:
     case ActionType.UpdateUserMail:
     case ActionType.RestoreUserPassword: {
-      // todo lisa сделать нормальное значение русское
       emit('update-data', tableValue.value);
       return;
     }
     case ActionType.Timer: {
-      // сделать нормальное значение русское
       emit('update-data', String(timerValue.value));
       return;
     }
@@ -119,7 +103,7 @@ const handleFormSubmit = () => {
       >
         <ElSelect v-model="tableValue" placeholder="Select" size="large">
           <ElOption
-            v-for="item in options"
+            v-for="item in databaseOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"

@@ -7,6 +7,7 @@ defineProps<{
   data: Array<IScriptTreeItemNested> | null;
   dragOverId: string | null;
   dragId: string | null;
+  excludedChildrenIds: string[];
 }>();
 
 defineEmits<{
@@ -31,6 +32,7 @@ defineEmits<{
           :is-last="i === item.children.length - 1"
           :drag-over-id="dragOverId"
           :drag-id="dragId"
+          :excluded-children-ids="excludedChildrenIds"
           :nested-level="0"
           @handle-dragstart="(value: string) => $emit('drag-start', value)"
           @handle-dragover="(value: string) => $emit('drag-over', value)"
